@@ -5,7 +5,9 @@
 
 ![MINI Car 安裝說明文件](Mini_Car_Assembly.pdf)
 
-![MINI控制台安裝方式] ()
+![超音波_紅外線安裝說明文件](Sensor_Servo_Assembly.pdf)
+
+![MINI控制台連結電腦編輯器影片] ()
 
 
 
