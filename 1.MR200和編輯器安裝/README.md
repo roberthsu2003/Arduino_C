@@ -9,8 +9,8 @@
 
 ![超音波_紅外線安裝說明文件](Sensor_Servo_Assembly.pdf)
 
-![MINI控制台連結電腦編輯器影片](https://www.youtube.com/playlist?list=PLLVBR5MLJ8AW4XOThhsSQz_84RyxFMdV0)
 
+[![MR200-MINI-小車-組裝影片](../MR200.jgp)](https://www.youtube.com/playlist?list=PLLVBR5MLJ8AW4XOThhsSQz_84RyxFMdV0)
 ### 按鈕測試
 
 ```c
