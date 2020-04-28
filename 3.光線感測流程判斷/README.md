@@ -128,7 +128,7 @@ void loop() {
 [解題](./odd_even/odd_even.ino)
 
 ```c++
-*question oddEven1.cpp
+*作業
 請使用三元運算子? : 製作一個判斷奇偶數的程式，程式的執行結果。
 
 
@@ -136,7 +136,7 @@ void loop() {
 請輸入任意整數:50
 您這個數是:偶數
 ```
-[解題](https://repl.it/@roberthsu2003/oddEven1)
+[解題](./ternary/ternary.ino)
 
 
 ## 多向選擇(if ... else if..... else)
@@ -162,90 +162,101 @@ if (條件式一){
 
 
 
-// Name        : discount.cpp
+// Name        : discount.ino
 //輸入顧客購買金額，若金額在100000元打8折，50000打85折，30000打9折，10000打95折
 
-#include <iostream>
-using namespace std;
-
-int main() {
-	int money;
-	int payMoney;
-	cout << "請輸入購買金額:";
-	cin >> money;
-	if(money >= 100000){
-		payMoney = money * 0.8;
-	}else if(money >= 50000){
-		payMoney = money * 0.85;
-	}else if(money >= 30000){
-		payMoney = money * 0.9;
-	}else if (money >= 10000){
-		payMoney = money * 0.95;
-	}else{
-		payMoney = money;
-	}
-
-	cout << "實付金額是:" << payMoney << "元\n";
-
+//ArduinoC
+void setup() {
+  Serial.begin(9600);
+  Serial.print("請輸入購買金額:");  
 }
 
+void loop() {
+  //必需使用long, 不然會超出範圍
+  long money;
+  long payMoney;
+  if(Serial.available()){
+      money = Serial.parseInt();
+      Serial.print("您購買的金額是:");
+      Serial.println(money);
+      
+      if(money >= 100000){
+        payMoney = money * 0.8;
+      }else if(money >= 50000){
+        payMoney = money * 0.85;
+      }else if(money >= 30000){
+        payMoney = money * 0.9;
+      }else if (money >= 10000){
+        payMoney = money * 0.95;
+      }else{
+        payMoney = money;
+      }
+      Serial.print("實付金額是:");
+      Serial.print(payMoney);
+      Serial.println("元");   
+      Serial.println("========================");
+  }
+
+}
 ```
 
 ```c++
-*question grade_s.cpp
-讓使用者輸入成績, 若成績在90分以上就顯示「優等」, 80-89分顯示「甲等」，70-79分顯示「乙等」，60-69分顯示「丙等」，60分以上顯示「丁等」。
+*question light.ino
+*使用光敏電阻,檢查目前的亮度
+//小於等於100 很亮
+//小於等於200,大於100 亮
+//小於等於400,大於200有點亮
+//小於等於600,大於400有點暗
+//小於等於800,大於600暗
+//小於等於1023,大於800 很暗
+*當狀態改變時，請閃爍一下LED2
 
-顯示:
-請輸入成績(0-100):89
-甲等
+#include <MatrixMini.h>
+#define LIGHT_SENSOR A1
+#define LIGHT_DIGITOR A0
+
+MatrixMini Mini;
+
+String state;
+String preState="";
+
+void setup() {
+  Mini.begin();
+  Serial.begin(9600);
+  pinMode(LIGHT_DIGITOR, INPUT);  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int analogValue = analogRead(A1);
+  
+  if(analogValue<100){
+    state = "很亮";
+  }else if (analogValue<200){
+    state = "亮";
+  }else if (analogValue<400){
+    state = "有點亮";
+  }else if(analogValue<600){
+    state = "有點暗";
+  }else if(analogValue<800){
+    state = "暗";
+  }else{
+    state = "很暗";
+  }
+
+  if (state != preState){
+    Serial.println("狀態改變");
+    Mini.LED2.setRGB(255,0, 0);
+    delay(500);
+    Mini.LED2.setRGB(0,0, 0);
+    preState = state;
+  }
+  
+  Serial.println(state);
+  delay(500);
+}
 ```
-[解題](https://repl.it/@roberthsu2003/grades)
 
-```c++
-*question  employee.cpp
-某公司要將員工依年齡分配職務, 22至30歲者擔任外勤業務員，31歲至45歲者控任內勤文書，46至55歲者控任倉庫管理員，56以上強迫退休。請以if...eles if..選擇敘述撰寫此程式。
-
-顯示==============
-請輸入您的年齡:40
-您的職務是: 外勤業務員
-```
-[解題](https://repl.it/@roberthsu2003/employee)
-
-```c++
-*question
-試用巢狀的if-else敘述，撰寫一個可以判斷輸入數字為正負數以及奇偶數的的程式
-
-顯示=================
-請輸入數字:-56
-您輸入的-34是負偶數
-
-
-提示================
-if...
-    if...  
-    else...
-else...
-    if...
-    else...
-```
-[解題](https://repl.it/@roberthsu2003/nagativeandpositive)
-
-```c++  triangle.cpp
-輸入三角形2邊，再輸入斜邊，然後判斷三角形的種類
-1.若任意兩邊之和小於斜邊，則不是三角形。
-2.2邊平方相加等於斜邊平方，則為直角三角形。
-3.2邊平方相加大於斜邊平方，則為鈍角三角形。
-4.其它情形，即為銳角三角形。
-
-
-顯示====================
-1.請輸入1邊的邊長:6
-2.請輸入另1邊的邊長:7
-3.請輸入斜邊的邊長:12
-
-此三角形為一個鈍角三角形
-```
-[解題](https://repl.it/@roberthsu2003/triangle)
 
 ## switch case:
 
@@ -318,7 +329,7 @@ int main() {
 請輸入現在是第幾季(1-4):1
 現在是春天!
 ```
-[解題](https://repl.it/@roberthsu2003/seasons)
+
 
 ```c++ 
 *question robot.cpp
@@ -360,7 +371,7 @@ int main() {
 4	|	2,420,001 ~ 4,530,000	  | 30%	    |  365,000
 5	|	4,530,001以上          | 40%	    |  805,000		
 
-[解題](https://repl.it/@roberthsu2003/IncomeTax)
+
 
 ```c++
 *question member.cpp
@@ -374,7 +385,7 @@ int main() {
 您的利率是2%
 會員等級是B級
 ```
-[解題](https://repl.it/@roberthsu2003/member)
+
 
 
 
@@ -394,5 +405,5 @@ int main() {
 停車的總分數281
 停車的總費用是340
 ```
-[解題](https://repl.it/@roberthsu2003/parkingFee)
+
 
