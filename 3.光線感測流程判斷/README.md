@@ -125,7 +125,7 @@ void loop() {
 請輸入數字:15
 您輸入的15是奇數
 ```
-[解題](./ood_even/odd_even.ino)
+[解題](./odd_even/odd_even.ino)
 
 ```c++
 *question oddEven1.cpp
