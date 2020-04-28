@@ -33,6 +33,48 @@ int main() {
 }	
 ```
 
+```
+//arduinoC
+//arduinoC的輸出
+void setup() {
+  Serial.begin(9600);  
+  Serial.println("您好,Arduino");
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+}
+
+
+```
+
+```
+//arduinoC
+//arduinoC的輸入輸出
+void setup() {
+  Serial.begin(9600);
+  int englishScore = 60;
+  Serial.println("請輸入您的英文分數:");
+  
+  while(true){
+    if(Serial.available()){
+      englishScore = Serial.parseInt();
+      break;
+    }
+  }
+
+  Serial.print("Hello! 您的英文分數是:");
+  Serial.println(englishScore);
+  
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```
+
 # 資料型別和變數
 ```
 宣告變數
@@ -92,6 +134,22 @@ double | 8 Byte | 15位數
 ```
 [解題](https://repl.it/@roberthsu2003/student)
 
+```
+//arduinoC
+void setup() {
+  Serial.begin(9600);
+  
+  Serial.print("姓名\t 座號 \t 電話\n");
+  Serial.print("李振聲\t 11 \t 0220435437\n");
+  Serial.print("張四聲\t 12 \t 0221435896\n");
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```
+
 ## 字元型別
 ```c++
 char chrB;
@@ -114,6 +172,32 @@ int main() {
   cout << characterB << "\n";
 }
 ```
+
+```
+//arduinoC
+//arduinoC的輸出
+void setup() {
+  Serial.begin(9600);  
+  char characterA;
+  characterA = 'A';
+  Serial.print("characterA=");
+  Serial.print('\'');
+  Serial.print(characterA);
+  Serial.println('\'');
+
+  char characterB;
+  characterB = 65;
+  Serial.print("characterB=");
+  Serial.print('\'');
+  Serial.print(characterB);
+  Serial.println('\'');
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+}
+
+```
 ## 字串型別(string)
 ```c++
 string str1;
@@ -122,9 +206,30 @@ string str3 = "這是 \" C++ \",非常簡單";
 cout << "\nstr1:" << str1 << "\n";
 cout << "str2:" << str2 << endl;
 cout << "str3:" << str3 << "\n";
-
 ```
 
+```c
+//arduinoC
+void setup() {
+  Serial.begin(9600);
+  String str1;
+  String str2 = "這是字串";
+  String str3 = "這是 \" ArduinoC \",非常簡單";
+
+  Serial.print("str1:");
+  Serial.println(str1);
+  Serial.print("str2:");
+  Serial.println(str2);
+  Serial.print("str3:");
+  Serial.println(str3);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
+```
 ## 布林型別(bool)
 ```c++
 bool bolA = true;
@@ -140,10 +245,30 @@ false 代表 0
 只有0 ...代表false
 ``` 
 
+```
+//arduinoC
+void setup() {
+  Serial.begin(9600);
+  bool bolA = true;
+  bool bolB = false;
+
+  Serial.print("bolA=");
+  Serial.println(bolA);
+  Serial.print("bolB=");
+  Serial.println(bolB);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
+```
 
 ## 型別轉換
 #### 型別自動轉換
 ```c++
+//C語言寫法
 運算式中若含有不同的數值型別，編譯器會自動以值域較大的型別為轉換依據
 
 float PI = 3.14159;
@@ -152,12 +277,51 @@ int radius = 10;
 cout << "圓面積=" << PI * radius * radius; 
 ```
 
+```
+//arduinoC
+int radius = 10;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.print("area=");
+  Serial.println(PI * radius * radius);
+  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```
+
 ```c++
 如果是指字式，編譯器會自動將=右邊的資料型別轉換為左邊的資料型別。
 
 int area;
 area = PI * radius * radius; //自動由float轉換為int
 cout << "area =" << area;
+```
+
+```
+//arduinoC
+int area;
+int radius = 10;
+
+void setup() {
+  Serial.begin(9600);
+  area = PI * radius * radius;
+  Serial.print("圓面積=");
+  Serial.println(area);
+  while(true){
+    
+  }
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
 ```
 
 ```c++
@@ -221,9 +385,62 @@ b = (short)a; //大轉小，資料會遺失
 	
 ```
 
+```c
+//arduinoC
+unsigned short chinese = 0, english = 0, math = 0;
+
+void setup() {
+  Serial.begin(9600);
+  
+  Serial.print("請輸入國文成績:(0~100):");  
+  while(true){
+    if(Serial.available()){
+      chinese = Serial.parseInt();
+      Serial.println(chinese);
+      break;
+    }
+  }
+
+  Serial.print("請輸入英文成績:(0~100):");  
+  while(true){
+    if(Serial.available()){
+      english = Serial.parseInt();
+      Serial.println(english);
+      break;
+    }
+  }
+
+  Serial.print("請輸入數學成績:(0~100):");  
+  while(true){
+    if(Serial.available()){
+      math = Serial.parseInt();
+      Serial.println(math);
+      break;
+    }
+  }
+
+  int sum = chinese + english + math;
+  float average = sum / 3.0;
+  Serial.print("您的總分是:");
+  Serial.println(sum);
+
+  Serial.print("您的平均是:");
+  Serial.println(average);
+  
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```
+
 
 
 ### Arduino C 的輸出
+
+
 ```arduino C 
 //使用Serial.print()方法
 //輸出我們人類看的懂的文字
@@ -273,7 +490,27 @@ void loop() {
 }
 ```
 
-### Arduino C 的輸出
+### Arduino輸入
+```c
+//arduinoC
+void setup() {  
+  // initialize the serial communication:
+  Serial.begin(9600);    
+}
+
+void loop() {
+  String value;
+  
+  // check if data has been sent from the computer:
+  if (Serial.available()) {    
+    value = Serial.readString();
+    //輸出字串
+    Serial.println(value);    
+  }
+}
+```
+
+### Arduino C 的輸入輸出
 ```C
 #讀取整數
 #Serial.parseInt()
@@ -306,22 +543,5 @@ void loop() {
 }
 ```
 
-```c
-void setup() {  
-  // initialize the serial communication:
-  Serial.begin(9600);    
-}
-
-void loop() {
-  String value;
-  
-  // check if data has been sent from the computer:
-  if (Serial.available()) {    
-    value = Serial.readString();
-    //輸出字串
-    Serial.println(value);    
-  }
-}
-```
 
 
