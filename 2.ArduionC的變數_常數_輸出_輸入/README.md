@@ -1,38 +1,5 @@
 # 2.ArduionC的變數_常數_輸出_輸入
 
-### C++ 輸入與輸出
-
-```c++
-//C++語言
-//cin_s.cpp
-#include <iostream>
-using namespace std;
-
-int main() {
-	int englishScore = 60;
-	cout << "請輸入您的英文分數:";
-	cin >> englishScore;
-	cout << "Hello ! 您的英文分數是: " << englishScore;
-	return 0;
-}
-```
-
-```c++
-//C++語言
-//cin.cpp
-
-#include <iostream>
-using namespace std;
-	
-int main() {
-	string name;
-	cout << "請輸入中文姓名:";
-	cin >> name;
-	cout << "Hello! " << name;
-	return 0;
-}	
-```
-
 ```
 //arduinoC
 //arduinoC的輸出
@@ -126,13 +93,13 @@ double | 8 Byte | 15位數
 ```
 
 ```
-*question student.cpp
+
 請輸出:  
 姓名      座號      電話  
 李振聲    11        0229435437  
 張四聲    13        0229435467  
 ```
-[解題](https://repl.it/@roberthsu2003/student)
+
 
 ```
 //arduinoC
@@ -158,20 +125,6 @@ char chrC;
 chrC = 65;
 ```
 
-```c++
-#include <iostream>
-using namespace std;
-
-int main() {
-  char characterA;
-  characterA = 'A';
-  cout << characterA << "\n";
-
-  char characterB;
-  characterB = 65;
-  cout << characterB << "\n";
-}
-```
 
 ```
 //arduinoC
@@ -299,7 +252,6 @@ void loop() {
 
 int area;
 area = PI * radius * radius; //自動由float轉換為int
-cout << "area =" << area;
 ```
 
 ```
@@ -348,41 +300,6 @@ b = (int) a; //可以強制小轉大
 int a = 1234567;
 short b;
 b = (short)a; //大轉小，資料會遺失
-```
-
-```c++
-	範例:請讓使用者輸入三科成績後，自動計算其總分及平均
-	//============================================================================
-	// Name        : calscore.cpp
-	// Author      : 
-	// Version     :
-	// Copyright   : Your copyright notice
-	// Description : Hello World in C++, Ansi-style
-	//============================================================================
-	
-	#include <iostream>
-	using namespace std;
-	
-	int main() {
-		unsigned short chinese = 0, english = 0, math = 0;
-		cout << "請輸入國文成績(0~100):";
-		cin >> chinese;
-	
-		cout << "請輸入英文成績(0~100):";
-		cin >> english;
-	
-		cout << "請輸入數學成績(0~100):";
-		cin >> math;
-	
-		int sum = chinese + english + math;
-		//average = (float)sum / 3;
-		//average = (float)(sum / 3);
-		average = sum / 3.0;
-		cout << "您的總分為:" << sum << "分, 平均為" << average << "分\n";
-	
-		return 0;
-	}
-	
 ```
 
 ```c
@@ -512,6 +429,7 @@ void loop() {
 
 ### Arduino C 的輸入輸出
 ```C
+//RGBLED燈
 #讀取整數
 #Serial.parseInt()
 
