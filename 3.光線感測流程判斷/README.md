@@ -118,14 +118,14 @@ void loop() {
 ```
 
 ```c++
-*question
-試用if-else敘述，選寫一個判斷輸入的數字為奇數或偶數的程式,
+*作業
+試用if-else敘述，選寫一個判斷輸入的數字為奇數(LED1亮綠燈)或偶數(LED2亮綠燈)的程式,
 
 顯示=============
 請輸入數字:15
 您輸入的15是奇數
 ```
-[解題](https://repl.it/@roberthsu2003/oddEven)
+[解題](./ood_even/odd_even.ino)
 
 ```c++
 *question oddEven1.cpp
