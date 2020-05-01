@@ -103,4 +103,25 @@ void loop() {
 }
 ```
 
+### 光敏電阻測試
+
+```c++
+#define LIGHT_SENSOR A1
+#define LIGHT_DIGITOR A0
+
+
+void setup() {
+  
+  Serial.begin(9600);
+  pinMode(LIGHT_DIGITOR, INPUT);  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int analogValue = analogRead(A1);
+  Serial.println(analogValue);
+  delay(500);
+}
+```
+
 
