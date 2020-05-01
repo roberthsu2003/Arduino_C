@@ -1,4 +1,14 @@
 # 光線感測流程判斷
+## 比較運算子
+a| 運算子 | 意義 
+-|---|--- 
+a|== | 內容相等 
+a|!= | 內容不相等 
+a|> | 大於 
+a|< | 小於 
+a|>= | 大於等於 
+a|<= | 小於等於 
+
 ## 流程控制
 ```
 arduinoC的流程控制的指令分為2部份
@@ -11,7 +21,6 @@ if(條件式){
   ......
 }
 ```
-
 ## 單向選擇(if...)
 
 ```c++
@@ -368,4 +377,65 @@ void loop() {
 }
 ```
 
+## 邏輯運算子 
+| ! | not |
+|:--|:--|
+| && | and |
+| 2直線 | or |
 
+### 使用邏輯運算子
+```c
+//同時按下左按鈕和右按鈕蜂鳴器會呼叫
+//使用邏輯運算子 &&
+//使用MatrixMini,只可以使用D4,D1,D2,D3都被pullup,所以蜂鳴器要安裝在D4
+
+#include <MatrixMini.h>
+#define buzzer 6
+MatrixMini Mini;
+
+void setup() {  
+  Mini.begin();
+  Serial.begin(9600);
+  pinMode(buzzer, OUTPUT);
+  digitalWrite(buzzer, HIGH);
+}
+
+void loop() {
+  if(Mini.BTN1.get() && Mini.BTN2.get()){
+    digitalWrite(buzzer,LOW);
+  }else{
+    digitalWrite(buzzer,HIGH);
+  }
+  
+}
+```
+### 使用巢狀判斷
+```
+//同時按下左按鈕和右按鈕蜂鳴器會呼叫
+//使用巢狀判斷
+//使用MatrixMini,只可以使用D4,D1,D2,D3都被pullup
+
+#include <MatrixMini.h>
+#define buzzer 6
+MatrixMini Mini;
+
+void setup() {  
+  Mini.begin();
+  Serial.begin(9600);
+  pinMode(buzzer, OUTPUT);
+  digitalWrite(buzzer, HIGH);
+}
+
+void loop() {
+  if(Mini.BTN1.get()){
+    if(Mini.BTN2.get()){
+      digitalWrite(buzzer,LOW);
+    }else{
+      digitalWrite(buzzer,HIGH);   
+    }
+  }else{
+    digitalWrite(buzzer,HIGH);
+  }
+  
+}
+```
