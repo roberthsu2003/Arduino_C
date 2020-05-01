@@ -335,4 +335,37 @@ void loop() {
 ```
 [解題](./ternary/ternary.ino)
 
+```
+//按左按鈕,左按鈕亮
+//按右按鈕,右按鈕亮
+
+#include <MatrixMini.h>
+MatrixMini Mini;
+
+void setup() {
+  Mini.begin();
+  Serial.begin(9600);
+}
+
+void loop() {
+  switch(Mini.BTN1.get()){
+    case 1:
+      Mini.LED1.setRGB(255,0,0);
+      break;
+    case 0:
+      Mini.LED1.setRGB(0,0,0);
+  }
+
+  switch(Mini.BTN2.get()){
+    case 1:
+      Mini.LED2.setRGB(255,0,0);
+      break;
+    case 0:
+      Mini.LED2.setRGB(0,0,0);
+  }
+  
+
+}
+```
+
 

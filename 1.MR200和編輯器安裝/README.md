@@ -5,10 +5,7 @@
 
 ![MINI控制器腳位定義文件](Mini_Pin_Definition.pdf) 
 
-![MINI Car 安裝說明文件](Mini_Car_Assembly.pdf)
-
 ![超音波_紅外線安裝說明文件](Sensor_Servo_Assembly.pdf)
-
 
 [![MR200-MINI-小車-組裝影片](MR200.jgp)](https://www.youtube.com/playlist?list=PLLVBR5MLJ8AW4XOThhsSQz_84RyxFMdV0)
 ### 按鈕測試
