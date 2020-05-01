@@ -3,7 +3,7 @@
 //蜂鳴器
 /*
  I/O腳接 pin3
-  Melody
+Melody
 
 */
 #define NOTE_B0  31
