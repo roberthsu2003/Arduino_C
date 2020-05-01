@@ -288,4 +288,30 @@ void loop() {
 }
 ```
 
+### 紅外線感測器
+```c
+//面對正面方向
+//A1 - 紅外線左模組
+//A2 - 紅外線右模組
+
+#define irLeft A1
+#define irRight A2
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int leftValue = analogRead(irLeft);
+  int rightValue = analogRead(irRight);
+  Serial.print("left:");
+  Serial.println(leftValue);
+  Serial.print("right:");
+  Serial.println(rightValue);
+  delay(500);
+}
+```
+
 
