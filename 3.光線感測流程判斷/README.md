@@ -280,38 +280,47 @@ num1+num2=24
 //========================================================
 
 
-// Name        : calculate.cpp
+// Name        : calculate.ino
 //讓使用者輸入加、減、乘、除運算子, 就會顯示運算結果
 
-#include <iostream>
-using namespace std;
-
-int main() {
-	char op;
-	int num1 = 20, num2 = 4;
-	cout << "num1=20,num2=4\n";
-	cout << "請輸入要執行的運算(+-*/):";
-	cin >> op;
-	switch(op){
-	case '+':
-		cout << "num1+num2=" << num1+num2 << "\n";
-		break;
-	case '-':
-			cout << "num1-num2=" << num1-num2 << "\n";
-			break;
-	case '*':
-			cout << "num1*num2=" << num1*num2 << "\n";
-			break;
-	case '/':
-			cout << "num1/num2=" << num1/num2 << "\n";
-			break;
-	default:
-			cout << "無法執行運算!\n";
-			break;
-	}
-	return 0;
+byte num1=20;
+byte num2=4;
+void setup() {
+  Serial.begin(9600);
+  Serial.println("num1=20, num2=4");
+  Serial.println("請輸入要執行的運算(+, -, *, /):");
+  
 }
 
+void loop() {
+  if(Serial.available()){
+     char op = Serial.read();
+     switch(op){
+      case '+':
+        Serial.print("num1+num2=");
+        Serial.println(num1+num2);
+        break;
+      case '-':
+        Serial.print("num1-num2=");
+        Serial.println(num1-num2);
+        break;
+        
+      case '*':
+        Serial.print("num1*num2=");
+        Serial.println(num1*num2);
+        break;
+        
+      case '/':
+        Serial.print("num1/num2=");
+        Serial.println(num1/num2);
+        break;
+        
+      default:
+        Serial.println("default");
+     }
+  }
+
+}
 
 ```
 
@@ -325,90 +334,5 @@ int main() {
 您這個數是:偶數
 ```
 [解題](./ternary/ternary.ino)
-
-```
-*question season_s.cpp
-讓使用者入1-4的數字，由1到4分別顯示春天、夏天、秋天、冬天。
-
-顯示:
-請輸入現在是第幾季(1-4):1
-現在是春天!
-```
-
-
-```c++ 
-*question robot.cpp
-製作如下圖範例，點選中文的選項之後，會顯示對應的英文
-
-顯示===============
-1.您好嗎?
-2.晚安
-3.早安
-請選擇中文的選項<1-3>:2
-英文是:good evening
-```
-[解題](https://repl.it/@roberthsu2003/robot)
-
-```c++
-*question
-
-下列為綜合所得稅試算
-輸入使用者綜合所得淨額後，印出稅率，累進差額，還有今年應納稅額
-
-
-顯示========================
-請輸入綜合所得淨額:1500000
-
-綜合所得淨額: 1500000 元
-稅額: 20%
----------------------
-稅金: 300000 元
-累進差額:1300000
-----------------------
-今年應納稅額: 170000 元			
-```
-
-級別	| 綜合所得淨額			|		   稅額	  |    累進差額
-----|---------------|-------------|-----------
-1	|	0 ~ 540,000			        | 5%		  |    0
-2	| 540,001 ~ 1,200,000		  | 10%	    | 36,400
-3	|	1,200,001 ~ 2,420,000	  | 20%     |  130,000
-4	|	2,420,001 ~ 4,530,000	  | 30%	    |  365,000
-5	|	4,530,001以上          | 40%	    |  805,000		
-
-
-
-```c++
-*question member.cpp
-輸入您的存款金額並給予適當的利率及會員等級.
-1存款大於等於1000000利率4%,否則利率2%
-2存款大於等於1000000為A級會員，存款500000-999999為B級會員，其他為C級會員
-
-顯示================================
-請輸入您的存款:750000
-
-您的利率是2%
-會員等級是B級
-```
-
-
-
-
-```c++
-
-//parkingFee
-
-//假設某個停車場的費率是停車2小時以內，每半小時30元，超過2小時，但未滿4小時的部份，每半小時40元，超過4小時以上的部份，每半小時60元，未滿半小時部分不計費。
-//如果您從早上10點23分停到下午3點20分，請撰寫程式計算共需繳交的停車費
-//輸入說明:(24小時制)
-
-顯示:
-請輸入進場時間:9 15
-請輸入出場時間:13 56
-進場時間是9-15
-出場時間是13-56
-停車的總分數281
-停車的總費用是340
-```
 
 
