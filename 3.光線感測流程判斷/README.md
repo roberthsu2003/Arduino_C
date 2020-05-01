@@ -138,6 +138,9 @@ void loop() {
 ```
 [解題](./ternary/ternary.ino)
 
+```c++
+
+```
 
 ## 多向選擇(if ... else if..... else)
 ```c++
