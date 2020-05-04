@@ -215,19 +215,45 @@ while(n<10){
 
 
 
-#include <iostream>
-using namespace std;
+#include <MatrixMini.h>
 
-int main() {
-	int deposit=0, num=0, inputNum;
-	while(deposit < 30000){
-		num++;
-		cout << "請輸入第" << num << "個月份的存款:";
-		cin >> inputNum;
-		deposit += inputNum;
-	}
-	cout << "恭喜!已經存夠了，存了" << num << "個月的總存款為:" << deposit << "元。";
-	return 0;
+MatrixMini Mini;
+int num=0, inputNum;
+long deposit=0; 
+
+void setup() {
+  Serial.begin(9600);
+  Mini.begin();
+  Mini.LED1.setRGB(255,0, 0);
+  Mini.LED2.setRGB(255,0, 0);
+
+   while(deposit < 30000){
+    num++;
+    Serial.print("請輸入第");
+    Serial.print(num);
+    Serial.print("個月份的存款:");
+    while(true){
+      if(Serial.available()){        
+        inputNum = Serial.parseInt();
+        Serial.println(inputNum);
+        deposit += inputNum;
+        break;
+      }
+    }
+    Mini.LED1.setRGB(255,0, 0);
+    Mini.LED2.setRGB(255,0, 0);
+  }
+  Mini.LED1.setRGB(0,255, 0);
+  Mini.LED2.setRGB(0,255, 0);
+  Serial.print("恭喜!已經存夠了,存了");
+  Serial.print(num);
+  Serial.print("個月的總存款為:");
+  Serial.print(deposit);
+  Serial.println("元");
+}
+
+void loop() {
+ 
 }
 ```
 
@@ -408,38 +434,6 @@ int main() {
 }
 ```
 
-```c++
-*問題 various_loop1.cpp
-以for迴圈計算1到100的和
-
-顯示============
-1+2+3+~+100的總合是5050
-```
-
-[解題](https://repl.it/@roberthsu2003/variousloop1)
-
-```c++
-*問題 various_loop2.cpp
-以while迴圈計算1到100的和
-
-顯示============
-1+2+3+~+100的總合是5050
-
-```
-
-[解題](https://repl.it/@roberthsu2003/variousloop2)
-
-```c++
-*問題 various_loop3.cpp
-以do_while形式計算1到100的和
-
-顯示============
-1+2+3+~+100的總合是5050
-
-```
-
-[解題](https://repl.it/@roberthsu2003/variablesloop3)
-
 
 ```c++ 
 *問題 nestedLoop1.cpp
@@ -452,46 +446,4 @@ int main() {
 1
 ```
 [解題](https://repl.it/@roberthsu2003/nestedLoop1)
-
-```c++
-*問題 nestedLoop2.cpp
-試寫出下列數字排列的程式
-
-顯示=================================
-    5
-   44
-  333
- 2222
-11111 
-```
-
-[解題](https://repl.it/@roberthsu2003/nestedLoop1)
-
-```c++
-*問題 inputLoop.cpp
-設計一個程式，使用者先入一個M, 再輸入另一個數N,然後程式可以求出M*1 + M*2 + M*3 + M*4 + M*5....... + M*N的值
-
-顯示==========================
-輸入M:5
-輸入N:4
-M*1 + M*2 + M*3 + ......+ M*N = 50
-```
-
-[解題](https://repl.it/@roberthsu2003/inputLoop)
-
-```c++ 
-*問題 commonfactor.cpp
-設計一個程式，可以由鍵盤輸入兩個數值，並求出這2個數值的最大公因數和最小公倍數
-
-顯示======================================
-求兩數的最大公因數和最小公倍數
-請輸入第一個整數:XXX
-請輸入第二個整數:XXX
-
-計算結果:
-14 和 35 的最大公因數:7
-14 和 35 的最小倍數是:70
-```
-[解題](https://repl.it/@roberthsu2003/commonfactor)
-
 
