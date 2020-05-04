@@ -285,7 +285,9 @@ do{
 //============================================================================
 // Name        : dowhile2.cpp
 //預設的密碼為5678，使用者若輸入的密碼錯誤，將不斷出現輸入密碼訊息，直到輸入的密碼正確才顯示正確訊息
-
+//密碼錯誤,發出單一聲音,燈光顯示紅燈
+//密碼正確,發出不同聲音,燈光顯示綠燈
+//
 //============================================================================
 請輸入密碼:1234
 請輸入密碼:2345
@@ -295,19 +297,38 @@ do{
 恭喜!您的密碼正確了!請進
 //============================================================================
 
+#include "sound.h"
 
-#include <iostream>
-using namespace std;
-
-int main() {
-	string password;
-	do{
-		cout << "請輸入密碼:";
-		cin >> password;
-	}while(password != "5678");
-	cout << "恭喜!你的密碼正確了!請進";
-	return 0;
+String password;
+void setup() {
+  Serial.begin(9600);
+  pinMode(3, OUTPUT);
+  digitalWrite(3, HIGH);
+  
+  do{
+    Serial.print("請輸入密碼:");
+    while(true){
+      if(Serial.available()){
+        password = Serial.readString();
+        Serial.println(password);
+        break;
+      }
+    }
+    digitalWrite(3, LOW);
+    delay(200);
+    digitalWrite(3, HIGH);
+  }while(password != "5678");
+  Serial.println("恭喜!你的密碼正確了!請進");
+  digitalWrite(3, LOW);
+  Sound::melodySound();
+  digitalWrite(3, HIGH);
 }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
 ```
 
 
