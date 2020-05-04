@@ -345,8 +345,8 @@ void loop() {
 [解題](./ternary/ternary.ino)
 
 ```
-//按左按鈕,左按鈕亮
-//按右按鈕,右按鈕亮
+//按左按鈕,左燈亮
+//按右按鈕,右燈亮
 
 #include <MatrixMini.h>
 MatrixMini Mini;

@@ -57,24 +57,39 @@ void loop() {
 請輸入星期日 的支出678
 本星期的支出為:4037元
 //==================================================================
-#include <iostream>
-using namespace std;
+void setup() {
+  Serial.begin(9600);
+  int sum = 0, n;
+  for (int i = 1; i <= 7; i++) {
+    if (i == 7) {
+      Serial.print("請輸入星期日的支出:");
+    } else {
+      Serial.print("請輸入星期");
+      Serial.print(i);
+      Serial.print("的支出:");
+    }
 
-int main() {
-	int sum=0, n;
-	for(int i=1; i<=7; i++){
-		if(i==7){
-			cout << "請輸入星期日的支出:";
-		}else{
-			cout << "請輸入星期" << i << " 的支出:";
-		}
+    while (true) {
+      if (Serial.available()) {
+        n = Serial.parseInt();
+        Serial.println(n);
+        sum += n;
+        break;
+      }
 
-		cin >> n;
-		sum += n;
-	}
+    }
 
-	cout << "本星期的支出為:" << sum << "元\n";
-	return 0;
+
+  }
+  Serial.print("本星期的支出為:");
+  Serial.print(sum);
+  Serial.println("元");
+
+}
+
+void loop() {
+
+
 }
 ```
 
