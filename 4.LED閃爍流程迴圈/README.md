@@ -296,14 +296,13 @@ do{
 請輸入密碼:5678
 恭喜!您的密碼正確了!請進
 //============================================================================
-
+//copy sound.h和sound.cpp
 #include "sound.h"
-
+//蜂鳴器接D1
 String password;
+Sound s(3);
 void setup() {
-  Serial.begin(9600);
-  pinMode(3, OUTPUT);
-  digitalWrite(3, HIGH);
+  Serial.begin(9600);  
   
   do{
     Serial.print("請輸入密碼:");
@@ -314,29 +313,25 @@ void setup() {
         break;
       }
     }
-    digitalWrite(3, LOW);
-    delay(200);
-    digitalWrite(3, HIGH);
+    s.beep(200);
   }while(password != "5678");
   Serial.println("恭喜!你的密碼正確了!請進");
-  digitalWrite(3, LOW);
-  Sound::melodySound();
-  digitalWrite(3, HIGH);
+  s.bee();
+ 
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
 
 }
-
 ```
 
 
 
 ## break可以跳出迴圈
 ```c++
-while1_s.cpp
-小美是一位教師，請你以while迴圈方式為小美設計一個輸入成績的程式，如果輸入負數表示成績輸入結束，在輸入成績結束後顯示班上總成績及平均成績。
+while1_s.ino
+小美是一位教師，請你以while迴圈方式為小美設計一個輸入成績的程式，如果同時按BTN1和BTN2表示成績輸入結束，在輸入成績結束後顯示班上總成績及平均成績。
 
 顯示===============
 請輸入第1位學生的成績:89
@@ -345,27 +340,57 @@ while1_s.cpp
 請輸入第4位學生的成績:89
 全班總成績為:XXX分, 平均為XX.XX分
 =========================================
+#蜂鳴器接D4
 
-#include <iostream>
-using namespace std;
+#include "sound.h"
+#include <MatrixMini.h>
 
-int main() {
-	int num = 0;
-	int score=0;
-	int sum=0;
-	do{	
-		cout << "請輸入第" << num+1 << "學生的成績:";	
-		cin >> score;				
-		if(score < 0){
-			break;
-		}		
-		sum += score;
-		num += 1;
-		
-	}while(true);
-	cout << "全班總成績為:" << sum << "平均分數為" << (float)sum / num;
+Sound s(6);
+MatrixMini Mini;
+
+void setup() {
+  Serial.begin(9600);
+  Mini.begin();
+  bool state = false;
+  int num = 0;
+  int score=0;
+  int sum=0;
+  do{
+    Serial.print("請輸入第");
+    Serial.print(num+1);
+    Serial.print("學生的成績:");
+    while(true){
+      if(Serial.available()){
+        score = Serial.parseInt();
+        Serial.println(score);
+        s.beep(200);        
+        break;
+      }
+      if(Mini.BTN1.get()==1 && Mini.BTN2.get()==1){
+        state = true;
+        break;
+      }
+    }
+    
+    if(state){
+      Serial.println();
+      break;
+    }
+    sum += score;
+    num += 1;
+  }while(true);
+  s.beep(500);
+  
+  Serial.print("全班總成績為:");
+  Serial.print(sum);
+  Serial.print("平均分數為");
+  Serial.println((float)sum / num);
 }
 
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
 ```
 
 ## continue強制回到迴圈起始位置
