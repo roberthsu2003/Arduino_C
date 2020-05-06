@@ -395,9 +395,9 @@ void loop() {
 
 ## continue強制回到迴圈起始位置
 ```c++
-continue.cpp
+continue.ino
 
-請設計一個程式，讓使用者輸入數值，只有加總正偶數值，不加總正奇數值，如果輸入負數，結束程式。
+請設計一個程式，讓使用者輸入數值(響一短音)，只有加總正偶數值，不加總正奇數值，如果輸入負數，結束程式(響一長音)。
 顯示:========================================
 請輸入第1個數值:456
 請輸入第2個數值:455
@@ -405,91 +405,104 @@ continue.cpp
 請輸入第4個數值:-1
 所有輸入的正偶數的加總是:xxxxxxx
 =================================
+#import "sound.h"
+Sound s(6);
 
+void setup() {
+  Serial.begin(9600);
+  int num=0;
+  int inputNum;
+  int sum=0;
+  do{
+    Serial.print("請輸入第");
+    Serial.print(num + 1);
+    Serial.print("個數值:");
 
-#include <iostream>
-using namespace std;
+    while(true){
+      if(Serial.available()){
+        inputNum = Serial.parseInt();
+        Serial.println(inputNum);
+        s.beep(200);
+        break;
+      }
+    }
+    
+    if(inputNum < 0){
+      s.beep(1000);
+      break;
+    }
+    num ++;
+    
+    if(inputNum % 2 == 1){
+      continue;
+    }
+    sum += inputNum;
 
-int main() {
-	int num=0;
-	int inputNum;
-	int sum=0;
-	do{
-		cout << "請輸入第" << num + 1 << "個數值:";
-		cin >> inputNum;
-		if(inputNum < 0){
-			break;
-		}
-		num ++;
-		if(inputNum % 2 == 1){
-			continue;
-		}
-		sum += inputNum;
-
-	}while(true);
-	cout << "所有輸入的正偶數的加總是:" << sum;
+  }while(true);
+  Serial.print("所有輸入的正偶數的加總是:");
+  Serial.println(sum);
 }
-```
 
-```c++
-break可以跳出迴圈
-
-//============================================================================
-// Name        : guess.cpp
-//猜數字遊戲
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
-
-using namespace std;
-
-int main() {
-	int guess;
-	int min = 1;
-	int max = 99;
-	int keyin;
-	int count = 0;
-	srand(time(NULL));
-	guess = rand() % max + min;
-	cout << "===============猜數字遊戲=================:\n\n";
-	do{
-		cout << "猜數字範圍" << min << "~" << max << ":";
-		cin >> keyin;
-		count++;
-
-		if(keyin >=min && keyin <=max){
-			if(keyin == guess){
-				cout << "賓果!猜對了,答案是" << guess << endl;
-				cout << "您猜了" << count << "次\n\n";
-				break;
-			}else if (keyin > guess){
-				max = keyin;
-				cout << "再小一點!";
-			}else if (keyin < guess){
-				min = keyin;
-				cout << "再大一點!";
-			}
-			cout << "您猜了" << count << "次\n\n";
-		}else{
-			cout << "請輸入提示範圍內的數字! \n";
-		}
-
-
-	}while(true);
+void loop() {
+  // put your main code here, to run repeatedly:
 
 }
+
 ```
+
 
 
 ```c++ 
-*問題 nestedLoop1.cpp
-試寫出下列數字排列的程式 
+*問題 nestedLoop1.ino
+試寫出下列數字排列的程式
+顯示1個數字(響1次,並燈光亮1次)
+顯示2個數字(響2次,並燈光亮2次) 
+.... 
 顯示=================================
-55555
-4444
-333
-22
-1
+	5
+   44
+  333
+ 2222
+11111
+
+
+
+#include "sound.h"
+#include <MatrixMini.h>
+
+Sound s(6);
+MatrixMini Mini;
+
+void setup() {
+  Serial.begin(9600);
+  Mini.begin();
+  for(int i=5; i >= 1; i--){
+    for(int j=1; j <= 5; j++){
+      if(j >= i){
+        Serial.print(i);
+        s.beep(200);
+        Mini.LED1.setRGB(255,0, 0);        
+        Mini.LED2.setRGB(255,0, 0);
+        delay(200);
+        Mini.LED1.setRGB(0,0, 0);        
+        Mini.LED2.setRGB(0,0, 0);
+
+      }else{
+        delay(200);
+        Serial.print(' ');
+      }
+      
+    }
+    delay(200);
+    Serial.println();
+  }
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
 ```
-[解題](https://repl.it/@roberthsu2003/nestedLoop1)
+
 
