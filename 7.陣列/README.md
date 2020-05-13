@@ -1,3 +1,5 @@
+
+
 # 陣列
 ## 一維陣列初值設定
 ```
@@ -119,6 +121,44 @@ void loop() {
 
 }
 ```
+
+### 陣列參數
+```c++
+//============================================================================
+// Name        : array11.cpp
+//以陣列當作參數，觀查陣列傳遞變化
+
+#include <iostream>
+using namespace std;
+
+void showArray(int tempary[], int count){
+
+	for(int i=0; i<count; i++){
+		cout << "any[" << i << "]=" << tempary[i] << " \t";
+	}
+	cout << "\n\n";
+}
+
+
+void sub2(int tempary[], int count){
+	for(int i=0; i<count; i++){
+		tempary[i] *= 2;
+	}
+}
+
+int main() {
+	int ary[] = {212, 328, 765, 986};
+	int count = sizeof(ary)/ sizeof(ary[0]);
+	cout << "呼叫showArray\n";
+	showArray(ary, count);
+
+	sub2(ary, count);
+
+	showArray(ary, count);
+	return 0;
+}
+```
+
 
 ### 
 ```
@@ -304,50 +344,6 @@ int median(int ten[]){
 20 45 98 23 85
 由大到小的排序後:
 98 85 45 23 20
-```
-[解題](https://repl.it/@roberthsu2003/bubbles)
-
-### 陣列的應用:循序搜尋
-
-```c++
-// Name        : sequential.cpp
-//百貨公司舉辦週年抽獎活動，將顧客的抽獎編號及姓名分別儲存於陣列中，使用者輸入編號，程式會搜尋出該編號的姓名並顯示。若查詢不到也會顯示無此編號的訊息
-
-//============================================================
-
-請輸入中獎者的編號943
-中獎者的姓名為:stu3(共比對3次)
-
-//============================================================
-
-#include <iostream>
-using namespace std;
-
-int main() {
-	int nums[] = {256, 731, 943, 389, 142, 645, 829, 945, 371, 418};
-	string names[] = {"stu1","stu2","stu3","stu4","stu5","stu6","stu7","stu8","stu9","stu10"};
-	int inputNum;
-	int i;
-	int n = sizeof(nums) / sizeof(nums[0]);
-	bool isfound = false;
-	cout << "請輸入中獎者的編號";
-	cin >> inputNum;
-	for(i=0; i<n ; i++){
-		if(nums[i] == inputNum){
-			isfound = true;
-			break;
-		}
-	}
-
-	if(isfound == true){
-		cout << "中獎者的姓名為:" << names[i];
-	}else{
-		cout << "無此中獎號碼!";
-	}
-
-	cout << "(共比對" << i+1 << "次)\n\n";
-	return 0;
-}
 ```
 
 
