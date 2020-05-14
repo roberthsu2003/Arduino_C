@@ -10,7 +10,7 @@
 [![MR200-MINI-小車-組裝影片](MR200.jgp)](https://www.youtube.com/playlist?list=PLLVBR5MLJ8AW4XOThhsSQz_84RyxFMdV0)
 ### 按鈕測試
 
-```c
+```c++
 #include <MatrixMini.h>
 
 MatrixMini Mini;
@@ -32,7 +32,7 @@ void loop() {
 
 ### RGBLED測試
 
-```c
+```c++
 #include <MatrixMini.h>
 
 MatrixMini Mini;
@@ -62,7 +62,7 @@ void loop() {
 
 ### 直流馬達測試
 
-```c
+```c++
 #include <MatrixMini.h>
 
 MatrixMini Mini;
@@ -124,7 +124,7 @@ void loop() {
 ### 蜂鳴器測試
 
 
-```c
+```c++
 //蜂鳴器
 /*
  I/O腳接 pin3
@@ -259,7 +259,7 @@ void loop() {
 ```
 
 ### 超音波感測器
-```
+```c++
 //藍線A0 - Echo
 //白線A1 - Trig
 //安裝NewPing Library
@@ -286,7 +286,7 @@ void loop() {
 ```
 
 ### 紅外線感測器
-```c
+```c++
 //面對正面方向
 //A1 - 紅外線左模組
 //A2 - 紅外線右模組

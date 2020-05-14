@@ -1,6 +1,6 @@
 # 2.ArduionC的變數_常數_輸出_輸入
 
-```
+```c++
 //arduinoC
 //arduinoC的輸出
 void setup() {
@@ -15,7 +15,7 @@ void loop() {
 
 ```
 
-```
+```c++
 //arduinoC
 //arduinoC的輸入輸出
 void setup() {
@@ -101,7 +101,7 @@ double | 8 Byte | 15位數
 ```
 
 
-```
+```c++
 //arduinoC
 void setup() {
   Serial.begin(9600);
@@ -126,7 +126,7 @@ chrC = 65;
 ```
 
 
-```
+```c++
 //arduinoC
 //arduinoC的輸出
 void setup() {
@@ -161,7 +161,7 @@ cout << "str2:" << str2 << endl;
 cout << "str3:" << str3 << "\n";
 ```
 
-```c
+```c++
 //arduinoC
 void setup() {
   Serial.begin(9600);
@@ -198,7 +198,7 @@ false 代表 0
 只有0 ...代表false
 ``` 
 
-```
+```c++
 //arduinoC
 void setup() {
   Serial.begin(9600);
@@ -230,7 +230,7 @@ int radius = 10;
 cout << "圓面積=" << PI * radius * radius; 
 ```
 
-```
+```c++
 //arduinoC
 int radius = 10;
 
@@ -254,7 +254,7 @@ int area;
 area = PI * radius * radius; //自動由float轉換為int
 ```
 
-```
+```c++
 //arduinoC
 int area;
 int radius = 10;
@@ -302,7 +302,7 @@ short b;
 b = (short)a; //大轉小，資料會遺失
 ```
 
-```c
+```c++
 //arduinoC
 unsigned short chinese = 0, english = 0, math = 0;
 
@@ -358,7 +358,7 @@ void loop() {
 ### Arduino C 的輸出
 
 
-```arduino C 
+```c++ 
 //使用Serial.print()方法
 //輸出我們人類看的懂的文字
 /*
@@ -408,7 +408,7 @@ void loop() {
 ```
 
 ### Arduino輸入
-```c
+```c++
 //arduinoC
 void setup() {  
   // initialize the serial communication:
@@ -428,7 +428,7 @@ void loop() {
 ```
 
 ### Arduino C 的輸入輸出
-```C
+```c++
 //RGBLED燈
 #讀取整數
 #Serial.parseInt()
