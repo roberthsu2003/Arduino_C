@@ -11,25 +11,27 @@
 
 ```c++
 //============================================================================
-// Name        : function1.cpp
+// Name        : function1.ino
 //定義函式，顯示「歡迎光臨」。
 
-#include <iostream>
-using namespace std;
-
-void sayHello(){
-	cout << "歡迎光臨!" << endl;
+void setup() {
+  Serial.begin(9600);
+  sayHello();
 }
 
-int main() {
-	sayHello();
-	return 0;
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
+void sayHello(){
+  Serial.println("歡迎光臨!");
 }
 ```
 
 ### 
 ```c++
-// Name        : function2.cpp
+// Name        : function2.ino
 //輸入攝氏溫度，求華氏溫度
 /*=============================
 
@@ -40,29 +42,39 @@ int main() {
 
 ===============================*/
 
+int value;
+float result;
 
-#include <iostream>
-using namespace std;
+void setup() {
+  Serial.begin(9600);
+  Serial.print("攝氏10度轉華氏溫度=");
+  Serial.println(temperature(10));
+  Serial.println();
+  Serial.print("請輸入攝氏溫度:");
+  while(true){
+    if(Serial.available()){
+      value = Serial.parseInt();
+      Serial.println(value);
+      result = temperature(value);
+      break;
+    }
+  }
+  Serial.print("華氏溫度=");
+  Serial.println(result);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
 
 float temperature(int value){
-	return 1.8 * value + 32;
-}
-
-int main() {
-	cout << "攝氏10度轉華氏溫度=" << temperature(10) << endl;
-	cout << "----------------\n";
-	int value;
-	float result;
-	cout << "請輸入攝氏溫度:";
-	cin >> value;
-	result = temperature(value);
-	cout << "華氏溫度=" << result << endl;
-	return 0;
+  return 1.8 * value + 32;
 }
 ```
 
 ```
-*問題 transtemperature.cpp
+*問題 transtemperature.ino
 輸入華氏溫度，求攝氏溫度
 顯示=====================
 請輸入華氏溫度:xx
@@ -86,53 +98,77 @@ return <返回值>
 ===============================*/
 
 
-#include <iostream>
-using namespace std;
+int inputNum;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.print("請輸入數字 n:");
+  while(true){
+    if(Serial.available()){
+      inputNum = Serial.parseInt();
+      Serial.println(inputNum);
+      showNum(inputNum);
+      Serial.println();
+    }
+  }
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
 
 void showNum(int n){
-	int i = 1;
-	while(true){
-		if (i > n){
-			return;
-		}
-		cout << i << " ";
-		i++;
-	}
+  int i = 1;
+  while(true){
+    if (i > n){
+      return;
+    }
+    Serial.print(i);
+    Serial.print(" ");
+    i++;
+  }
 
 }
 
-int main() {
-	int inputNum;
-	cout << "請輸入數字 n:";
-	cin >> inputNum;
-	showNum(inputNum);
-	cout << endl;
-	return 0;
-}
 ```
 
 ### 參數
 ### 傳值呼叫(call by value)
 ```c++
-// Name        : callByValue1.cpp
+// Name        : callByValue1.ino
 //callByValue
 
-#include <iostream>
-using namespace std;
-int turbo(int);
 
-int main() {
-	int speed;
-	cout << "請輸入初始速度:";
-	cin >> speed;
-	speed = turbo(speed);
-	cout << "加速後的速度:" << speed << endl;
-	return 0;
+int speed;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.print("請輸入初始速度:");
+  while(true){
+    if(Serial.available()){
+      speed = Serial.parseInt();
+      Serial.println(speed);
+      speed = turbo(speed);
+      Serial.print("加速後的速度:");
+      Serial.println(speed);
+      break;
+    }
+  }
 }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
 int turbo(int speed){
-	cout << "加速前速度:" << speed << endl;
-	return speed += 10;
+  Serial.print("加速前速度:");
+  Serial.println(speed);
+  return speed += 10;
 }
+
+
 ```
 
 
