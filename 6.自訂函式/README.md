@@ -174,47 +174,73 @@ int turbo(int speed){
 
 ### 傳參考呼叫(call by reference)
 ```c++
-// Name        : callByReference.cpp
+// Name        : callByReference.ino
 //callByReference
 
-#include <iostream>
-using namespace std;
-void turbo(int&);
 
-int main() {
-	int speed;
-	cout << "請輸入初始速度:";
-	cin >> speed;
-	turbo(speed);
-	cout << "加速後的速度:" << speed << endl;
-	return 0;
+int speed;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.print("請輸入初始速度:");
+  while(true){
+    if(Serial.available()){
+      speed = Serial.parseInt();
+      Serial.println(speed);
+      turbo(speed);
+      Serial.print("加速後的速度:");
+      Serial.println(speed);
+      break;
+    }
+  }
 }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
 void turbo(int& speed){
-	cout << "加速前速度:" << speed << endl;
-	speed += 10;
+  Serial.print("加速前速度:");
+  Serial.println(speed);
+  speed += 10;
 }
+
+
 ```
 	
 ### 傳址呼叫(call by address)
 ```c++
-// Name        : callByAddress.cpp
+// Name        : callByAddress.ino
 //call by address
 
-#include <iostream>
-using namespace std;
-void turbo(int*);
 
-int main() {
-	int speed;
-	cout << "請輸入初始速度:";
-	cin >> speed;
-	turbo(&speed);
-	cout << "加速後的速度:" << speed << endl;
-	return 0;
+int speed;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.print("請輸入初始速度:");
+  while(true){
+    if(Serial.available()){
+      speed = Serial.parseInt();
+      Serial.println(speed);
+      turbo(&speed);
+      Serial.print("加速後的速度:");
+      Serial.println(speed);
+      break;
+    }
+  }
 }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+
 void turbo(int* speed){
-	cout << "加速前速度:" << *speed << endl;
-	*speed += 10;
+  Serial.print("加速前速度:");
+  Serial.println(*speed);
+  *speed += 10;
 }
 ```
 

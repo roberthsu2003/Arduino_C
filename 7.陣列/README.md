@@ -38,7 +38,7 @@ void loop() {
 ```
 
 ```c++
-// Name        : array2.cpp
+// Name        : array2.ino
 //建立陣列語法
 //宣告時同時給值
 //============================================================
@@ -128,40 +128,46 @@ void loop() {
 // Name        : array11.cpp
 //以陣列當作參數，觀查陣列傳遞變化
 
-#include <iostream>
-using namespace std;
+
+int ary[] = {212, 328, 765, 986};
+
+void setup() {
+  Serial.begin(9600);
+  int count = sizeof(ary)/ sizeof(ary[0]);
+  Serial.println("呼叫showArray");
+  showArray(ary, count);
+  sub2(ary, count);
+  showArray(ary, count);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
 
 void showArray(int tempary[], int count){
 
-	for(int i=0; i<count; i++){
-		cout << "any[" << i << "]=" << tempary[i] << " \t";
-	}
-	cout << "\n\n";
+  for(int i=0; i<count; i++){
+    Serial.print("any[");
+    Serial.print(i);
+    Serial.print("]=");
+    Serial.print(tempary[i]);
+    Serial.print("\t");
+  }
+  Serial.print("\n\n");
 }
-
 
 void sub2(int tempary[], int count){
-	for(int i=0; i<count; i++){
-		tempary[i] *= 2;
-	}
+  for(int i=0; i<count; i++){
+    tempary[i] *= 2;
+  }
 }
 
-int main() {
-	int ary[] = {212, 328, 765, 986};
-	int count = sizeof(ary)/ sizeof(ary[0]);
-	cout << "呼叫showArray\n";
-	showArray(ary, count);
-
-	sub2(ary, count);
-
-	showArray(ary, count);
-	return 0;
-}
 ```
 
 
 ### 
-```
+```c++
 // Name        : average.ino
 //使用超音波測計算每收集10個的平均距離
 
@@ -212,7 +218,7 @@ void callBack(){
 }
 ```
 
-```
+```c++
 // Name        : min.ino
 //使用光敏電阻計算每收集10個的最小值是
 
@@ -351,8 +357,9 @@ int median(int ten[]){
 ###  
 ```c++
 //============================================================================
-// Name        : biglottery.cpp
+// Name        : biglottery.ino
 //撰寫一個大樂透電腦自動選號程式，程式執行會以亂數的方式顯示1-49之間七個不重複的大樂透號碼。
+//每按一次按鈕就會產生一次
 
 //============================================================
 
@@ -364,41 +371,73 @@ int median(int ten[]){
 
 //============================================================
 
-#include <iostream>
-#include <stdlib.h>
-#include <time.h>
+#include <MatrixMini.h>
+MatrixMini Mini;
 
-using namespace std;
+bool buttonState;
+int pressCount=0;
 
-int main() {
-	int lot[49];
-	int choose[7];
-	int num = 7;
-	int maxIndex = 48;
+void setup() {
+  Mini.begin();
+  Serial.begin(9600);  
+  Serial.println("大樂透電腦選號器"); 
+  randomSeed(analogRead(0));
+}
 
-	for(int i=0;i<49;i++){
-		lot[i] = i+1;		
-	}
-	srand(time(NULL));
-	for(int i=0;i<7;i++){
-		int randIndex = rand()%(maxIndex+1);
-		choose[i] = lot[randIndex];
-		lot[randIndex] = lot[maxIndex];
-		maxIndex--;
-	}
+void loop() {
+  // put your main code here, to run repeatedly:
+  
+  
+  if(buttonState != Mini.BTN1.get()){
+    delay(50);
+    if(buttonState != Mini.BTN1.get()){
+      pressCount++;
+      buttonState = !buttonState;
+      Serial.println(pressCount);
+      callBack();
+    }    
+  } 
+  
+}
 
-	cout << "本期大樂透電腦選號號碼如下:\n\n";
-	for(int i=0; i<num; i++){
-		cout << choose[i] << " ";
-	}
-	cout << "\n\n特別號" << choose[6] << "\n\n";
+void lottery(){
+  int lot[49];
+  int choose[7];
+  int num = 7;
+  int maxIndex = 48;
 
+  for(int i=0;i<49;i++){
+    lot[i] = i+1;   
+  }
+  
+  for(int i=0;i<7;i++){
+    int randIndex = random(maxIndex+1);
+    Serial.println(randIndex);
+    choose[i] = lot[randIndex];
+    lot[randIndex] = lot[maxIndex];
+    maxIndex--;
+  }
 
+  Serial.println("本期大樂透電腦選號號碼如下:\n");
+  for(int i=0; i<num; i++){
+    Serial.print(choose[i]);
+    Serial.print(" ");
+  }
+  Serial.print("\n\n特別號");
+  Serial.print(choose[6]);
+  Serial.println();
+
+}
+
+void callBack(){
+ if(pressCount % 2 == 0){
+  lottery();
+ }
 }
 ```
 
-```
-*問題 ninenine.cpp
+```c++
+*問題 ninenine.ino
 以程式建立 9 x 9 的二維整數陣列，陣列內容是九九乘法表的乘積，並將之輸出
 
 顯示==========
@@ -411,43 +450,38 @@ int main() {
 7*1=7   7*2=14  7*3=21  7*4=28  7*5=35  7*6=42  7*7=49  7*8=56  7*9=63
 8*1=8   8*2=16  8*3=24  8*4=32  8*5=40  8*6=48  8*7=56  8*8=64  8*9=72
 9*1=9   9*2=18  9*3=27  9*4=36  9*5=45  9*6=54  9*7=63  9*8=72  9*9=81
+============================
+
+unsigned short elements[9][9];
+void setup() {
+  Serial.begin(9600);   
+  for(int i = 0; i<9; i++){
+    for(int j =0; j<9; j++){
+      elements[i][j] = (i+1) * (j+1);
+    }
+  }
+
+  for(int i = 0; i<9; i++){
+    for(int j =0; j<9; j++){
+      Serial.print(i+1);
+      Serial.print("*");
+      Serial.print(j+1);
+      Serial.print("=");
+      Serial.print(elements[i][j]);
+      Serial.print("\t");
+    }
+    Serial.println();
+  }
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
 ```
-[解題](https://repl.it/@roberthsu2003/ninenine)
 
-
-
-```
-*問題 sorted.cpp
-建立一個長度為10的一維整數陣列，可以供使用者輸入10個數字後，並由小到大排序輸出。
-
-//顯示=======================================
-```
-[解題](https://repl.it/@roberthsu2003/sorted)
-
-
-```
-*問題 ageSorted.cpp
-建立一個姓名陣列及一個同樣長度的年齡陣列，使用者可以依選項選擇將年齡由小到大，或由大到小排序，並搭配姓名輸出
-string names[] = {"老李", "王種", "發叔", "龍哥" ,"小陳" ,"小張"};
-int ages[] = {56, 45, 51, 48, 35, 57};
-
-顯示==========
-尚未排序前:
-老李    王種    發叔    龍哥    小陳    小張
-56     45     51     48      35     57
-
-
-1.由小到大排序      2.由大到小排序
-請輸入選項:1
-
-由小到大排序後:
-小陳    王種    龍哥    發叔    老李    小張
-35     45     48      51     56     57
-```
-[解題](https://repl.it/@roberthsu2003/ageSorted)
-
-# 自訂函式與陣列
-```c
+```c++
 //蜂鳴器
 /*
  I/O腳接 pin3
