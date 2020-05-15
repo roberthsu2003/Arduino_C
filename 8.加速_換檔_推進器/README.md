@@ -141,6 +141,10 @@ void loop() {
 
 ```
 
+
+![光敏電阻接線](IMG_0355.jpg)
+[影片展示](https://youtu.be/Pf6Lla-hKBw)
+
 ```c++
 //將光敏電阻插入至A1
 #define LIGHT_SENSOR A1
