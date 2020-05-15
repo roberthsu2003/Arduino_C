@@ -192,3 +192,60 @@ void turn(int i){
   Mini.M2.set(0);
 }
 ```
+
+![超音波接線](IMG_0357.jpg)
+[影片展示](https://youtu.be/_M_bf6qUX-E)
+
+```c++
+//永遠保持社交距離的小車
+//超音波插入至A1
+
+//藍線A0 - Echo
+//白線A1 - Trig
+//安裝NewPing Library
+
+#include <NewPing.h> 
+#include <MatrixMini.h>
+#define TRIGGER_PIN  A1
+#define ECHO_PIN     A0
+#define MAX_DISTANCE 200
+ 
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+MatrixMini Mini;
+
+
+void setup() {
+  Mini.begin();  // create with the default frequency 1.6KHz
+  Serial.begin(9600); // set up Serial library at 9600 bps  
+  Serial.println("\n Matrix Mini DC Motor Test \n");
+  
+}
+
+void loop() { 
+  delay(50);
+  int uS = sonar.ping();
+  int distance = uS / US_ROUNDTRIP_CM;
+  Serial.print("Ping: ");
+  Serial.print(distance);
+  Serial.println("cm");
+  if(distance < 10 && distance > 0){
+    back(-75);
+  }
+}
+
+void back(int i){  
+  Mini.M1.set(i);  
+  Mini.M2.set(i);
+  delay(1000);
+  Mini.M1.set(0);
+  Mini.M2.set(0);
+  delay(1000);
+  Mini.M1.set(-i);  
+  Mini.M2.set(-i);
+  delay(1000);
+  Mini.M1.set(0);
+  Mini.M2.set(0);
+  
+}
+
+```
