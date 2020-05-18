@@ -288,11 +288,13 @@ void loop() {
 ### 紅外線感測器
 ```c++
 //面對正面方向
-//A1 - 紅外線左模組
-//A2 - 紅外線右模組
+//D1 - 紅外線左模組
+//D2 - 紅外線右模組
 
-#define irLeft A1
-#define irRight A2
+//白色-0
+//黑色-1
+#define irLeft 2
+#define irRight 3
 
 void setup() {
   // put your setup code here, to run once:
