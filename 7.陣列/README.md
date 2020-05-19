@@ -167,6 +167,7 @@ void sub2(int tempary[], int count){
 
 
 ### 
+
 ```c++
 // Name        : average.ino
 //使用超音波測計算每收集10個的平均距離
