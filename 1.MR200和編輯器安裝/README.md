@@ -303,8 +303,8 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int leftValue = analogRead(irLeft);
-  int rightValue = analogRead(irRight);
+  int leftValue = digitalRead(irLeft);
+  int rightValue = digitalRead(irRight);
   Serial.print("left:");
   Serial.println(leftValue);
   Serial.print("right:");
