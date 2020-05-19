@@ -31,6 +31,9 @@ void loop() {
 }
 ```
 
+### 循跡車
+[循跡車](https://youtu.be/Y316hPo1ZcU)
+
 ```c++
 //循跡車
 //人面對背面方向
@@ -100,6 +103,10 @@ void running(int leftMotor, int rightMotor){
 ```
 
 ### 找尋出路的小車
+
+[受困的小車](https://youtu.be/RA1Zy24_muo)
+
+[找尋出路的小車](https://youtu.be/f0zaeLrmeyI)
 
 ```c++
 //循跡車-找尋出路的小車
