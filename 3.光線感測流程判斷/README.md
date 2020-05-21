@@ -199,7 +199,7 @@ void loop() {
 }
 ```
 
-[光敏電阻接線圖](IMG_0367.jpg)
+![光敏電阻接線圖](IMG_0367.jpg)
 
 ```c++
 *question light.ino
