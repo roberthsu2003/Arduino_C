@@ -136,6 +136,8 @@ void loop() {
 ```
 [解題](./odd_even/odd_even.ino)
 
+
+
 ## 多向選擇(if ... else if..... else)
 ```c++
 
@@ -196,6 +198,7 @@ void loop() {
 
 }
 ```
+[光敏電阻接線圖](IMG_0367)
 
 ```c++
 *question light.ino
