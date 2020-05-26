@@ -219,9 +219,9 @@ void setup() {
 void loop() {
   int uS = sonar.ping();
   int distance = uS / US_ROUNDTRIP_CM;
-  if(distance < 7){
-    Mini.M1.set(-20);  
-    Mini.M2.set(-20);
+  if(distance < 15 && distance >0){
+    Mini.M1.set(-35);  
+    Mini.M2.set(-35);
     delay(1000);
     detect();
   }else{
@@ -249,18 +249,24 @@ void detect(){
     //轉一圈的時間,要取得20個值
     unsigned long currentTime = millis();  
     if(currentTime - startTime1 >= interval/20){      
-      recordTimeAndDisctance(times, distances, n);     
-      n++; //小車旋轉1圈,超音波偵測的次數      
+      recordTimeAndDisctance(times, distances, n); 
+      if(n==19){         
+        break;    
+      }
+      n++; //小車旋轉1圈,超音波偵測的次數   
+         
       startTime1 = currentTime;
     }
     
    
     //小車旋轉interval的時間
+    /*
     if(millis() - startTime >= interval){
        Mini.M1.set(0);  
        Mini.M2.set(0);       
       break;
     }
+    */
   }
   for(int i=0; i<n ; i++){
     Serial.println(times[i]);
@@ -377,6 +383,5 @@ Serial.println("==========================");
  }
  
 }
-
 
 ```
