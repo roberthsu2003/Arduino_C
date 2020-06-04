@@ -1,13 +1,13 @@
 # MR200操控台控制台
-![arduino編輯器安裝說明文件](ArduinoInstallation.pdf) 
+[arduino編輯器安裝說明文件](ArduinoInstallation.pdf) 
  
-![MINI控制器外觀說明](Matrix_Mini.pdf) 
+[MINI控制器外觀說明](Matrix_Mini.pdf) 
 
-![MINI控制器腳位定義文件](Mini_Pin_Definition.pdf) 
+[MINI控制器腳位定義文件](Mini_Pin_Definition.pdf) 
 
-![超音波_紅外線安裝說明文件](Sensor_Servo_Assembly.pdf)
+[超音波_紅外線安裝說明文件](Sensor_Servo_Assembly.pdf)
 
-[![MR200-MINI-小車-組裝影片](MR200.jgp)](https://www.youtube.com/playlist?list=PLLVBR5MLJ8AW4XOThhsSQz_84RyxFMdV0)
+[![MR200-MINI-小車-組裝影片](MR200.jpg)](https://www.youtube.com/playlist?list=PLLVBR5MLJ8AW4XOThhsSQz_84RyxFMdV0)
 ### 按鈕測試
 
 ```c++
