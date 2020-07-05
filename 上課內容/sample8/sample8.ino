@@ -5,6 +5,7 @@
 MatrixMini Mini;
 
 String state;
+String preState="";
 void setup() {
   Mini.begin();
   Serial.begin(9600);
@@ -35,7 +36,13 @@ void loop() {
   }
 
   Serial.println(state);
-
+  if(state != preState){
+    Serial.println("狀態改變");
+    Mini.LED2.setRGB(255, 0, 0);
+    delay(500);
+    Mini.LED2.setRGB(0, 0, 0);
+    preState = state;
+  }
   
   delay(500);
 }
