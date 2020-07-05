@@ -14,5 +14,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   Serial.print("Digitor:");
   Serial.println(digitalRead(LIGHT_DIGITOR));
+  Serial.print("Analog:");
+  Serial.println(analogRead(LIGHT_SENSOR));
   delay(500);
 }
