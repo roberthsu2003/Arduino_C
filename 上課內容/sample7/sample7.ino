@@ -20,9 +20,37 @@ void loop() {
     if(score >= 60){
       Serial.println("及格!");
       Mini.LED1.setRGB(0, 255, 0);
+      delay(500);
+      Mini.LED1.setRGB(0, 0, 0);      
+      delay(500);
+
+      Mini.LED1.setRGB(0, 255, 0);
+      delay(500);
+      Mini.LED1.setRGB(0, 0, 0);
+      delay(500);
+
+      Mini.LED1.setRGB(0, 255, 0);
+      delay(500);
+      Mini.LED1.setRGB(0, 0, 0);
+      delay(500);
+
     }else{
       Serial.println("不及格!");
       Mini.LED1.setRGB(255, 0, 0);
+      delay(500);
+      Mini.LED1.setRGB(0, 0, 0);
+      delay(500);
+
+      Mini.LED1.setRGB(255, 0, 0);
+      delay(500);
+      Mini.LED1.setRGB(0, 0, 0);
+      delay(500);
+
+      Mini.LED1.setRGB(255, 0, 0);
+      delay(500);
+      Mini.LED1.setRGB(0, 0, 0);
+      delay(500);
+
     }
   }
   
