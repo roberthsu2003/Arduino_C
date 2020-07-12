@@ -4,6 +4,7 @@
 //請使用function millis()
 
 #include <MatrixMini.h>
+#include <Thread.h>
 MatrixMini mini;
 
 unsigned long previousMillis = 0;
