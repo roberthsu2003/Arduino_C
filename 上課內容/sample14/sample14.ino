@@ -12,6 +12,7 @@
 
 
 #include <MatrixMini.h>
+#include <sound.h>
 
 MatrixMini Mini;
 
