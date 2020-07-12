@@ -7,6 +7,7 @@
 MatrixMini mini;
 
 unsigned long previousMillis = 0;
+unsigned long previousMillis1 = 0;
 
 //建立常數
 const long interval = 1000;
@@ -47,7 +48,38 @@ void loop() {
     }
 
     mini.LED1.setRGB(r,g,b);
-    mini.LED2.setRGB(g,b,r);
+    
+  }
+
+
+  unsigned long currentMillis1 = millis();
+  if(currentMillis1 - previousMillis1 >= 2000){
+    //過了1秒
+    second++;
+    previousMillis1 = currentMillis1;
+    Serial.print("過了");
+    Serial.print(second);
+    Serial.println("秒");
+
+    int randomValue = random(1000);
+    int r = 0;
+    int g = 0;
+    int b = 0;
+
+    switch(randomValue % 3){
+      case 0:
+        r = 255;
+        break;
+      case 1:
+        g = 255;
+        break;
+      case 2:
+        b = 255;
+        break;      
+    }
+
+    mini.LED2.setRGB(r,g,b);
+    
   }
   
 }
