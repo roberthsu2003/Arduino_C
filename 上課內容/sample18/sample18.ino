@@ -3,6 +3,9 @@
 //不使用delay()方法,計算時間,讓2個LED每格1秒亮燈,顏色要使用亂數
 //請使用function millis()
 
+#include <MatrixMini.h>
+MatrixMini mini;
+
 unsigned long previousMillis = 0;
 
 //建立常數
@@ -10,7 +13,9 @@ const long interval = 1000;
 unsigned long second=0;
 
 void setup() {
-  Serial.begin(9600);  
+  Serial.begin(9600); 
+  mini.begin(); 
+  randomSeed(analogRead(A0));
 }
 
 void loop() {
@@ -23,6 +28,26 @@ void loop() {
     Serial.print("過了");
     Serial.print(second);
     Serial.println("秒");
+
+    int randomValue = random(1000);
+    int r = 0;
+    int g = 0;
+    int b = 0;
+
+    switch(randomValue % 3){
+      case 0:
+        r = 255;
+        break;
+      case 1:
+        g = 255;
+        break;
+      case 2:
+        b = 255;
+        break;      
+    }
+
+    mini.LED1.setRGB(r,g,b);
+    mini.LED2.setRGB(g,b,r);
   }
   
 }
