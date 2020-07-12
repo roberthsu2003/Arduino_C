@@ -388,7 +388,7 @@ void loop() {
 ```c++
 //同時按下左按鈕和右按鈕蜂鳴器會呼叫
 //使用邏輯運算子 &&
-//使用MatrixMini,只可以使用D4,D1,D2,D3都被pullup,所以蜂鳴器要安裝在D4
+//使用MatrixMini,蜂鳴器安裝在D4
 
 #include <MatrixMini.h>
 #define buzzer 6
@@ -414,7 +414,7 @@ void loop() {
 ```c++
 //同時按下左按鈕和右按鈕蜂鳴器會呼叫
 //使用巢狀判斷
-//使用MatrixMini,只可以使用D4,D1,D2,D3都被pullup
+//使用MatrixMini
 
 #include <MatrixMini.h>
 #define buzzer 6
