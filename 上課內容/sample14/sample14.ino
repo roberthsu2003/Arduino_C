@@ -15,6 +15,7 @@
 #include <sound.h>
 
 MatrixMini Mini;
+Sound s(3);
 
 void setup() {
   Serial.begin(9600);
@@ -26,6 +27,7 @@ void setup() {
       delay(100);
       Mini.LED2.setRGB(0,0,0);
       delay(100);
+      s.beep(200);
     }
     Serial.println();
     delay(1000);
