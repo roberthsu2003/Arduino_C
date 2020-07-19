@@ -58,6 +58,8 @@ void setup() {
   myThread.onRun(detect);
   myThread.setInterval(50);  
   Serial.begin(9600);
+  pinMode(irLeft, INPUT);
+  pinMode(irRight, INPUT);
 }
 
 void loop() {
@@ -133,6 +135,8 @@ void setup() {
   myThread.setInterval(10); 
   randomSeed(analogRead(4));
   Serial.begin(9600);
+  pinMode(irLeft, INPUT);
+  pinMode(irRight, INPUT);
 }
 
 void loop() {
