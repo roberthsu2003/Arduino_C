@@ -39,8 +39,8 @@ void loop() {
 ```c++
 //循跡車
 //人面對背面方向
-//A1插孔 - 紅外線左模組
-//A2插孔- 紅外線右模組
+//D1插孔 - 紅外線左模組
+//D2插孔- 紅外線右模組
 
 //白色-0
 //黑色-1
@@ -50,8 +50,8 @@ void loop() {
 MatrixMini Mini;
 Thread myThread = Thread();
 //馬達會影響D1,D2
-#define irLeft A0
-#define irRight A1
+#define irLeft 2
+#define irRight 3
 
 void setup() {
   Mini.begin();
@@ -113,8 +113,8 @@ void running(int leftMotor, int rightMotor){
 ```c++
 //循跡車-找尋出路的小車
 //人面對背面方向
-//A1插孔 - 紅外線左模組
-//A2插孔- 紅外線右模組
+//D1插孔 - 紅外線左模組
+//D2插孔- 紅外線右模組
 
 //白色-0
 //黑色-1
@@ -124,8 +124,8 @@ void running(int leftMotor, int rightMotor){
 MatrixMini Mini;
 Thread myThread = Thread();
 //馬達會影響D1,D2
-#define irLeft A0
-#define irRight A1
+#define irLeft 2
+#define irRight 3
 
 void setup() {
   Mini.begin();
