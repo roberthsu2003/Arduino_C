@@ -21,5 +21,26 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
+  int currentLight = analogRead(LIGHT_SENSOR);
+  int diff = currentLight - lightAvg;
+  Serial.println(diff);
+  if(diff > 100){
+    switch(diff%2){
+      case 0:
+        turn(30);
+        break; 
+      case 1:
+        turn(-30);
+        break;
+    }
+  }
+}
 
+void turn(int i){
+  Mini.M1.set(i);
+  Mini.M2.set(-i);
+  delay(3000);
+  Mini.M1.set(0);
+  Mini.M2.set(0);
 }
