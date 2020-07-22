@@ -1,6 +1,6 @@
 int area;
-int radius = 10;
-float PI = 3.14159;
+int radius = 35;
+//float PI = 3.14159;
 
 void setup() {
   Serial.begin(9600);
