@@ -1,7 +1,7 @@
 # Arduino 自駕車導航系統設計
 
 ```
-1 ( A )在Arduino的程式中，若想加入註解，應以何符號標示?
+1 (  )在Arduino的程式中，若想加入註解，應以何符號標示?
 
 (A) /*...*/
 (B) \\
@@ -10,7 +10,7 @@
 ```
 
 ```
-2 ( A )在C語言中，若變數宣告int x=27; int y=5; 試問 x % y的運算結果為何?
+2 (  )在C語言中，若變數宣告int x=27; int y=5; 試問 x % y的運算結果為何?
 
 (A) 2
 (B) 3
@@ -19,7 +19,7 @@
 ```
 
 ```
-3 ( B )執行下列程式後，變數k = ? 
+3 (  )執行下列程式後，變數k = ? 
 
 		int k=0;
 		for(byte a=5; a<=10; a++)
@@ -32,7 +32,7 @@
 ```
 
 ```
-4 ( D )下列關於Arduino的Serial.print()方法特殊字元說明，何者錯誤?
+4 (  )下列關於Arduino的Serial.print()方法特殊字元說明，何者錯誤?
 
 (A) \t 代表跳位鍵字元
 (B) \n 代表換行字元
@@ -41,7 +41,7 @@
 ```
 
 ```
-5 ( C )digitalWrite(3, LOW)指令的作用是指定Arduino進行何動作?
+5 (  )digitalWrite(3, LOW)指令的作用是指定Arduino進行何動作?
 
 (A) 第3腳輸出 0V
 (B) 第3腳輸出 5V
@@ -50,7 +50,7 @@
 ```
 
 ```
-6 ( B )Arduino 程式中digitalWrite(7, HIGH)指令的作用為何?
+6 (  )Arduino 程式中digitalWrite(7, HIGH)指令的作用為何?
 
 (A) 指定輸出的高準位為7V
 (B) 指定D7腳輸出高準位
@@ -59,7 +59,7 @@
 ```
 
 ```
-7 ( C ) Arduino程式中analogWrite(10, 64)指令會在指定的I/O腳輸出多少工作週期的PWM
+7 (  ) Arduino程式中analogWrite(10, 64)指令會在指定的I/O腳輸出多少工作週期的PWM
 
 (A) 4%
 (B) 10%
@@ -68,7 +68,7 @@
 ```
 
 ```
-8 ( A ) Arduino UNO 控制板中，下列那一個pin腳無法輸出PWM?
+8 (  ) Arduino UNO 控制板中，下列那一個pin腳無法輸出PWM?
 
 (A) 4
 (B) 5
@@ -77,16 +77,16 @@
 ```
 
 ```
-9 ( B ) 若想指定Arduino的D3腳輸出控制一顆馬達，應使用哪一個指定設定 I/O 腳的電氣模式?
+9 (  ) 若想指定Arduino的D3腳輸出控制一顆馬達，應使用哪一個指定設定 I/O 腳的電氣模式?
 
 (A) pinMode(3, INPUT)
 (B) pinMode(3, OUTPUT)
-(C) pinMode(3, INPUT)
-(D) pintMode(3, OUTPUT)
+(C) setMode(3, INPUT)
+(D) setMode(3, OUTPUT)
 ```
 
 ```
-10 ( D ) delay(200)指令的意義為何? 
+10 (  ) delay(200)指令的意義為何? 
 
 (A) 產生200V電壓
 (B) 時間延遲200秒

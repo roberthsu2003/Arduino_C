@@ -81,8 +81,8 @@
 
 (A) pinMode(3, INPUT)
 (B) pinMode(3, OUTPUT)
-(C) pinMode(3, INPUT)
-(D) pintMode(3, OUTPUT)
+(C) setMode(3, INPUT)
+(D) setMode(3, OUTPUT)
 ```
 
 ```
