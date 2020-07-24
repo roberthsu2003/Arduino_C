@@ -24,7 +24,9 @@ void loop() {
     // set the brightness of the LED:
     Serial.println(value,DEC);
     Mini.LED1.setRGB(0, value, 0);
+    Mini.LED2.setRGB(value, 0, 0);
     delay(5000);
     Mini.LED1.setRGB(0, 0, 0);
+    Mini.LED2.setRGB(0, 0, 0);
   }
 }
