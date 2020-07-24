@@ -14,7 +14,7 @@ void setup() {
 void loop() {
   if(Serial.available()){
     int score = Serial.parseInt();
-    if(score >= 60){
+    if(score >= 80){
       Serial.println("及格!");
       Mini.LED1.setRGB(0, 255, 0);
       Mini.LED2.setRGB(0, 255, 0);
