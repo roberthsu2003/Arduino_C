@@ -7,6 +7,7 @@
 
 
 #include <NewPing.h>
+#include <MatrixMini.h>
 
 #define TRIGGER_PIN A1
 #define ECHO_PIN A0
@@ -15,15 +16,17 @@
 #define irRight 3
 
 NewPing sonar(TRIGGER_PIN,ECHO_PIN,MAX_DISTANCE);
+MatrixMini Mini;
 
 void setup() {
-  Serial.begin(9600);  
+  Serial.begin(9600);
+  Mini.begin(); 
   pinMode(irLeft,INPUT);
   pinMode(irRight,INPUT);
+  oneTurn();//測試轉一圈
 }
 
-void loop() {
-  
+void loop() {  
   int uS= sonar.ping();
   Serial.print("Ping: ");
   Serial.print(uS / US_ROUNDTRIP_CM);
@@ -36,4 +39,15 @@ void loop() {
   Serial.print("right:");
   Serial.println(rightValue);
   delay(500);
+}
+
+void oneTurn(){
+  int interval = 6500;
+  int speed = 20;
+  Mini.M1.set(speed);
+  Mini.M2.set(-speed);
+  delay(interval);
+  Mini.M1.set(0);
+  Mini.M2.set(0);
+  while(true);
 }
