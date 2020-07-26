@@ -264,6 +264,7 @@ void loop() {
 
 ### 超音波感測器
 ```c++
+//安裝在A1孔
 //藍線A0 - Echo
 //白線A1 - Trig
 //安裝NewPing Library
@@ -292,13 +293,13 @@ void loop() {
 ### 紅外線感測器
 ```c++
 //人面對背面方向
-//A1插孔 - 紅外線左模組
-//A2插孔- 紅外線右模組
+//D1插孔 - 紅外線左模組
+//D2插孔- 紅外線右模組
 
 //白色-0
 //黑色-1
-#define irLeft 3
-#define irRight 2
+#define irLeft 2
+#define irRight 3
 
 void setup() {
   // put your setup code here, to run once:
