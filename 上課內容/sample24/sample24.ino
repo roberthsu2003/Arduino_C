@@ -43,32 +43,20 @@ void loop() {
     delay(2000);
     oneTurn();
   }
-  
-  
-  /*
-  int uS= sonar.ping();
-  Serial.print("Ping: ");
-  Serial.print(uS / US_ROUNDTRIP_CM);
-  Serial.println("cm");
-
-  int leftValue = digitalRead(irLeft);
-  int rightValue = digitalRead(irRight);
-  Serial.print("left:");
-  Serial.println(leftValue);
-  Serial.print("right:");
-  Serial.println(rightValue);
-  delay(500);
-  */
+  delay(1);
+ 
 }
 
 bool goOrStop(){
   int uS= sonar.ping();
   int distance = uS / US_ROUNDTRIP_CM;
-  /*
+  
   Serial.print("Ping: ");
   Serial.print(uS / US_ROUNDTRIP_CM);
   Serial.println("cm");
-  */
+  if (distance == 0){
+    return true;
+  }
   return (distance > 10) ?  true : false;  
 }
 
@@ -76,8 +64,8 @@ void runS(){
   Serial.println("runS");
   int leftValue = digitalRead(irLeft);
   int rightValue = digitalRead(irRight);
-  int speed = 50;
-  int g = 20;
+  int speed = 70;
+  int g = 40;
   if(leftValue == 0 && rightValue == 0){
     //直線
     running(speed, speed);
