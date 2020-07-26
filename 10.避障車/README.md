@@ -302,6 +302,9 @@ Serial.println("==========================");
 
 ```
 
+### 避障(偵測無障礙空間)
+[避障(偵測無障礙空間)](https://youtu.be/HxvQXAvaBUI)
+
 ```c++
 //藍線A0 - Echo
 //白線A1 - Trig
