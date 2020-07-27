@@ -18,9 +18,15 @@ MatrixMini Mini;
 
 void setup() {
   Mini.begin();
+  Serial.begin(9600);
+  Serial.println("==========光敏電阻測試==============");
+  pinMode(LIGHT_DIGHTOR, INPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  Serial.println("==========光敏電阻數位訊號輸出==============");
+  bool digitalValue = digitalRead(LIGHT_DIGHTOR);
+  Serial.print("數位訊號是:");
+  Serial.println(digitalValue);
+  delay(1000);
 }
