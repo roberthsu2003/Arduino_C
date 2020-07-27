@@ -233,7 +233,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int analogValue = analogRead(A1);
+  int analogValue = analogRead(LIGHT_SENSOR);
   
   if(analogValue<100){
     state = "很亮";
