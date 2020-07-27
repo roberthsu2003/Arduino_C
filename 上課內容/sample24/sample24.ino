@@ -27,6 +27,7 @@ void setup() {
   pinMode(irLeft,INPUT);
   pinMode(irRight,INPUT);
   //oneTurn();//測試轉一圈
+  //while(true);
   myThread.onRun(runS);
   myThread.setInterval(50);
 }
@@ -89,12 +90,13 @@ void running(int leftMotor, int rightMotor){
 }
 
 void oneTurn(){
-  int interval = 3700;
+  //轉180
+  int interval = 1850;
   int speed = 30;
   Mini.M1.set(speed);
   Mini.M2.set(-speed);
   delay(interval);
   Mini.M1.set(0);
   Mini.M2.set(0);
-  //while(true);
+ 
 }
