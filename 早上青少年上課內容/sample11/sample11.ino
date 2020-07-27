@@ -28,5 +28,10 @@ void loop() {
   bool digitalValue = digitalRead(LIGHT_DIGHTOR);
   Serial.print("數位訊號是:");
   Serial.println(digitalValue);
+  Serial.println("\n\n");
+  Serial.println("==========光敏電阻類比訊號輸出==============");
+  int analogValue = analogRead(LIGHT_SENSOR);
+  Serial.print("類比訊號是:");
+  Serial.println(analogValue);
   delay(1000);
 }
