@@ -20,6 +20,32 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  if(Serial.available()){
+    char op = Serial.read();
+    switch(op){
+      case '+':
+        Serial.print("num1+num2=");
+        Serial.println(num1+num2);
+        break;
+
+      case '-':
+        Serial.print("num1-num2=");
+        Serial.println(num1-num2);
+        break;
+
+      case '*':
+        Serial.print("num1*num2=");
+        Serial.println(num1*num2);
+        break;
+        
+      case '/':
+        Serial.print("num1/num2=");
+        Serial.println(num1/num2);
+        break;
+        
+      default:
+        Serial.println("您輸入的運算字元不合法");
+    }
+  }
 
 }
