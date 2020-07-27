@@ -15,6 +15,7 @@
 #define LIGHT_DIGHTOR A0
 
 MatrixMini Mini;
+String state;
 
 void setup() {
   Mini.begin();
@@ -33,5 +34,22 @@ void loop() {
   int analogValue = analogRead(LIGHT_SENSOR);
   Serial.print("類比訊號是:");
   Serial.println(analogValue);
+  
+
+  if(analogValue < 100){
+    state = "很亮";
+  }else if(analogValue < 200){
+    state = "亮";
+  }else if(analogValue < 400){
+    state = "有點亮";
+  }else if(analogValue < 600){
+    state = "有點暗";
+  }else if(analogValue < 800){
+    state = "暗";
+  }else{
+    state = "很暗";
+  }
+  Serial.print("目前狀態:");
+  Serial.println(state);
   delay(1000);
 }
