@@ -38,16 +38,28 @@ void loop() {
 
   if(analogValue < 100){
     state = "很亮";
+    Mini.LED1.setRGB(0,255,255);
+    Mini.LED2.setRGB(0,255,255);
   }else if(analogValue < 200){
     state = "亮";
+    Mini.LED1.setRGB(127,255,212);
+    Mini.LED2.setRGB(127,255,212);
   }else if(analogValue < 400){
     state = "有點亮";
+    Mini.LED1.setRGB(0,139,0);
+    Mini.LED2.setRGB(0,139,0);
   }else if(analogValue < 600){
     state = "有點暗";
+    Mini.LED1.setRGB(255,0,0);
+    Mini.LED2.setRGB(255,0,0);
   }else if(analogValue < 800){
     state = "暗";
+    Mini.LED1.setRGB(0,255,0);
+    Mini.LED2.setRGB(0,255,0);
   }else{
     state = "很暗";
+    Mini.LED1.setRGB(0,0,255);
+    Mini.LED2.setRGB(0,0,255);
   }
   Serial.print("目前狀態:");
   Serial.println(state);
