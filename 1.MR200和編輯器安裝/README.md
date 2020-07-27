@@ -148,6 +148,7 @@ void loop() {
 ```c++
 //蜂鳴器
 /*
+插入到D1孔 
  I/O腳接 pin3
 Melody
 
