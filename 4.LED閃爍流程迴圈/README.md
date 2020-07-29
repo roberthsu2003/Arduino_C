@@ -19,25 +19,32 @@ for ([變數初始化宣告]; [條件判斷]; [改變量]){
 第 4 次迴圈的 i = 8,總和為:20
 第 5 次迴圈的 i = 10,總和為:30
 //=================================================================
+#define BUZZER 3
+
 void setup() {
-    Serial.begin(9600);
-    int sum = 0;
-    for(int i=2; i<= 10; i+=2){
-      sum += i;
-      Serial.print("第");
-      Serial.print(i/2);
-      Serial.print("次迴圈的i=");
-      Serial.print(i);
-      Serial.print(",總和為");
-      Serial.println(sum);
-    }
+  Serial.begin(9600);
+  pinMode(BUZZER, OUTPUT);
+  digitalWrite(BUZZER, HIGH); //一開始不要有聲音
+  
+  int sum = 0;
+  for(int i=2;i<=10;i+=2){
+    sum += i;
+    Serial.print("第");
+    Serial.print(i/2);
+    Serial.print("次迴圈的i=");
+    Serial.print(i);
+    Serial.print(",總和為");
+    Serial.println(sum);
+    digitalWrite(BUZZER, LOW);
+    delay(100);
+    digitalWrite(BUZZER, HIGH);
+    delay(1000);
+  }
 }
 
 void loop() {
-  
 
 }
-
 ```
 
 
