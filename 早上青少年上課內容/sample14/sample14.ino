@@ -9,6 +9,10 @@ void setup() {
   int n = 0;
   int sum = 0;
   for(int i=1; i<=7; i++){
+    digitalWrite(BUZZER,LOW);
+    delay(100);
+    digitalWrite(BUZZER,HIGH);
+    
     if(i==7){
       Serial.print("請輸入星期日的支出:");      
     }else{
