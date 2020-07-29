@@ -54,6 +54,7 @@ void loop() {
 //============================================================================
 // Name        : for2.ino
 //計算固定中的支出，媽媽每天會將家裡的花費記錄下來，並且計算本週的花費總和
+//每輸入一次就響一次
 //================================================================
 請輸入星期1 的支出567
 請輸入星期2 的支出456
@@ -64,38 +65,46 @@ void loop() {
 請輸入星期日 的支出678
 本星期的支出為:4037元
 //==================================================================
-void setup() {
-  Serial.begin(9600);
-  int sum = 0, n;
-  for (int i = 1; i <= 7; i++) {
-    if (i == 7) {
-      Serial.print("請輸入星期日的支出:");
-    } else {
-      Serial.print("請輸入星期");
-      Serial.print(i);
-      Serial.print("的支出:");
-    }
 
-    while (true) {
-      if (Serial.available()) {
+#define BUZZER 3
+
+void setup() {
+  //啟動BUZZER
+  pinMode(BUZZER,OUTPUT);
+  digitalWrite(BUZZER,HIGH);
+  Serial.begin(9600);
+
+  int n = 0;
+  int sum = 0;
+  for(int i=1; i<=7; i++){
+    digitalWrite(BUZZER,LOW);
+    delay(100);
+    digitalWrite(BUZZER,HIGH);
+    
+    if(i==7){
+      Serial.print("請輸入星期日的支出:");      
+    }else{
+      Serial.print("請輸入星期"+(String)i+"的支出:");
+    }
+    
+
+    while(true){
+      if(Serial.available()){
         n = Serial.parseInt();
         Serial.println(n);
         sum += n;
         break;
       }
-
     }
-
-
   }
-  Serial.print("本星期的支出為:");
-  Serial.print(sum);
-  Serial.println("元");
+
+  Serial.print("本星期的支出為:" + (String)sum + "元");
+ 
 
 }
 
 void loop() {
-
+  // put your main code here, to run repeatedly:
 
 }
 ```
@@ -207,8 +216,8 @@ while(n<10){
 //============================================================================
 // Name        : while2.cpp
 //小明想要存錢買一輛機車,機車每輛30000元，他將每月存的錢輸入，當存款足夠買機車時，就顯示提示訊息告知。
-//存款不足，顯示紅燈，存款足夠，顯示綠燈
-
+//存款不足，顯示紅燈，響一次
+//存款足夠，顯示綠燈，響音樂
 //============================================================================
 請輸入第1個月份的存款:4567
 請輸入第2個月份的存款:3456
