@@ -1,9 +1,16 @@
 #include <MatrixMini.h>
 #include <sound.h>
 
-void setup() {
-  // put your setup code here, to run once:
+#define BUZZER 3
+Sound s(BUZZER);
 
+void setup() {
+  pinMode(BUZZER, OUTPUT);
+  digitalWrite(BUZZER,HIGH);  
+  //s.bee();  
+  //s.beep(2000);
+  //s.phone();
+  s.melodySound();
 }
 
 void loop() {
