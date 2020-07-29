@@ -8,7 +8,9 @@ void setup() {
   pinMode(BUZZER, OUTPUT);
   digitalWrite(BUZZER,HIGH);  
   //s.bee();  
-  s.beep(1000);
+  //s.beep(2000);
+  //s.phone();
+  s.melodySound();
 }
 
 void loop() {
