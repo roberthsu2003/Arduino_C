@@ -7,7 +7,7 @@
 
 [MINI小車驅動程式](https://matrixrobotics.com/downloads/matrix-mini/)
 
-[下載sound類別]()
+[下載sound類別](sound.zip)
 
 [超音波_紅外線安裝說明文件](Sensor_Servo_Assembly.pdf)
 
