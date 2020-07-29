@@ -5,8 +5,10 @@
 Sound s(BUZZER);
 
 void setup() {
-  // put your setup code here, to run once:
-  s.bee();
+  pinMode(BUZZER, OUTPUT);
+  digitalWrite(BUZZER,HIGH);  
+  //s.bee();  
+  s.beep(1000);
 }
 
 void loop() {
