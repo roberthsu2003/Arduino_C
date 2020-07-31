@@ -31,8 +31,27 @@ void setup() {
         break;
       }
     }
+
+    if(keyin >= min && keyin <=max){
+      if(keyin == guess){
+        Serial.println("賓果!猜對了,答案是" + (String)guess);
+        Serial.println("您猜了" + (String)count + "次\n");
+        s.melodySound();
+        break;
+      }else if(keyin > guess){
+        max = keyin;
+        Serial.println("再小一點");
+      }else if(keyin < guess){
+        min = keyin;
+        Serial.println("再大一點");
+      }
+
+      Serial.println("您猜了" + String(count) + "次\n");
+    }else{
+      Serial.println("請輸入提示範圍內的數字!\n");
+    }
   }while(true);
-  
+  Serial.println("Game Over!!!");
 }
 
 void loop() {
