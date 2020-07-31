@@ -7,11 +7,14 @@ Sound s(BUZZER);
 void setup() {
   Serial.begin(9600);
   pinMode(BUZZER, OUTPUT);
+  int min = 1;
+  int max = 99;
+  int guess;
+  //建立亂數
+  randomSeed(analogRead(0));
+  guess = random(min, max+1);
+  Serial.println("現在的亂數是" + (String)guess);
   
-  digitalWrite(BUZZER,LOW);
-  delay(1000);
-  digitalWrite(BUZZER,HIGH);
-
 }
 
 void loop() {
