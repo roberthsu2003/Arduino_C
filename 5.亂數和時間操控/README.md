@@ -34,28 +34,30 @@ void loop() {
 //猜數字遊戲
 //猜對後請發出美樂迪音樂
 
-#include "sound.h"
+#include <sound.h>
 
-Sound s(6);
+#define BUZZER 3 //接線至D1插孔
+
+Sound s(BUZZER);
 
 void setup() {
   Serial.begin(9600);
-  int guess;
+  pinMode(BUZZER, OUTPUT);
   int min = 1;
   int max = 99;
-  int keyin;
+  int guess; // 隨機的數值
+  int keyin; //使用者輸入的值
   int count = 0;
-  randomSeed(analogRead(A0));
-  //1~99
-  guess = random(min,max+1);
-  Serial.println("===============猜數字遊戲=================:\n\n");
+  //建立亂數
+  randomSeed(analogRead(0));
+  guess = random(min, max+1);
+  //Serial.println("現在的亂數是" + (String)guess);
+  Serial.println("===============猜數字遊戲=================:\n");
   do{
-    Serial.print("猜數字範圍");
-    Serial.print(min);
-    Serial.print("~");
-    Serial.print(max);
-    Serial.print(":");
-    
+    //顯示猜數字的範圍
+    Serial.print("猜數字範圍" + (String)min + "~" + (String)max + ":");
+
+    //等待和接收使用者輸入,並且顯示輸入的數值
     while(true){
       if(Serial.available()){
         keyin = Serial.parseInt();
@@ -66,33 +68,31 @@ void setup() {
       }
     }
 
-    if(keyin >= min && keyin <= max){
+    if(keyin >= min && keyin <=max){
       if(keyin == guess){
-        Serial.print("賓果!猜對了,答案是");
-        Serial.println(guess);
-        Serial.print("您猜了");
-        Serial.print(count);
-        Serial.println("次\n");
+        Serial.println("賓果!猜對了,答案是" + (String)guess);
+        Serial.println("您猜了" + (String)count + "次\n");
         s.melodySound();
         break;
       }else if(keyin > guess){
         max = keyin;
-        Serial.println("再小一點\n");        
+        Serial.println("再小一點");
       }else if(keyin < guess){
         min = keyin;
-        Serial.println("再大一點!\n");
+        Serial.println("再大一點");
       }
-      Serial.print("您猜了");
-      Serial.print(count);
-      Serial.println("次");
+
+      Serial.println("您猜了" + String(count) + "次\n");
     }else{
-      Serial.println("請輸入提示範圍內的數字! \n");
+      Serial.println("請輸入提示範圍內的數字!\n");
     }
   }while(true);
+  Serial.println("Game Over!!!");
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+
 }
 ```
 
@@ -170,58 +170,65 @@ void loop() {
 #include <MatrixMini.h>
 #include <Thread.h>
 
+//建立小車
 MatrixMini Mini;
-Thread myThread = Thread();
+//建立時間管理
+Thread timeThread = Thread();
 
-         
 void setup() {
-  // set the digital pin as output:
+  //啟動序列埠
   Serial.begin(9600);
+  //啟動小車
   Mini.begin();
-  randomSeed(analogRead(A0));
-  myThread.onRun(callBack);
-  myThread.setInterval(500);
-}
+  //建立亂數種子
+  randomSeed(analogRead(0));
 
-void loop() {
-  if(myThread.shouldRun()){
-    myThread.run();
-  }
-  
+  //啟動時間管理
+  timeThread.onRun(callBack);
+  timeThread.setInterval(500);
 }
 
 void callBack(){
   static bool ledStatus = false;
   ledStatus = !ledStatus;
-  int randomValue = random(1000);
-    int r = 0;
-    int g = 0;
-    int b = 0;
-    switch(randomValue%3){
-      case 0:
+   int randomValue = random(1000);
+  int r = 0;
+  int g = 0;
+  int b = 0;
+  switch(randomValue%3){
+    case 0:
       r = 255;
       break;
-      
-      case 1:
+    case 1:
       g = 255;
       break;
-      
-      case 2:
+    case 2:
       b = 255;
       break;
-    }
-    
-  if (ledStatus == LOW) {      
-      Mini.LED1.setRGB(r, g, b);
-      Mini.LED2.setRGB(r, g, b);
-    } else {      
-      Mini.LED1.setRGB(0, 0, 0);
-      Mini.LED2.setRGB(0, 0, 0);
-    }
-  Serial.print("cool!現在的時間是: ");
+  }
+
+  if(ledStatus == LOW){
+    Mini.LED1.setRGB(r, g, b);
+    Mini.LED2.setRGB(r, g, b);
+  }else{
+    Mini.LED1.setRGB(0, 0, 0);
+    Mini.LED2.setRGB(0, 0, 0);
+  }
+
+  Serial.print("Cool!現在的時間是:");
   Serial.println(millis());
+  
 }
 
+void loop() {
+  //執行時間管理
+  if(timeThread.shouldRun()){
+    timeThread.run();
+  }
+
+ 
+
+}
 ```
 
 ```c++
