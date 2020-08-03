@@ -144,6 +144,7 @@ void loop() {
 
 
 ![光敏電阻接線](IMG_0355.jpg)
+![光敏電阻連接小車](IMG_0470.jpg)
 [影片展示](https://youtu.be/Pf6Lla-hKBw)
 
 ```c++
