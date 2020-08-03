@@ -28,10 +28,20 @@ void loop() {
     switch(diffentValue % 2){
       case 0:
       Serial.println("正轉");
+      turn(50);
       break;
       case 1:
       Serial.println("反轉");
+      turn(-50);
       break;
     }
   }
+}
+
+void turn(int speed){
+  Mini.M1.set(speed);
+  Mini.M2.set(-speed);
+  delay(3000);
+  Mini.M1.set(0);
+  Mini.M2.set(0);
 }
