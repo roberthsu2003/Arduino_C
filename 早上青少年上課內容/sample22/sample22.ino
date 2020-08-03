@@ -18,10 +18,20 @@ void setup() {
   lightAvg = lightTotal/10;
   Serial.print("目前光線平均強度");
   Serial.println(lightAvg);
-
+  
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  int currentLight = analogRead(LIGHT_SENSOR);
+  int diffentValue = currentLight - lightAvg;
+  if(diffentValue > 100){
+    switch(diffentValue % 2){
+      case 0:
+      Serial.println("正轉");
+      break;
+      case 1:
+      Serial.println("反轉");
+      break;
+    }
+  }
 }
