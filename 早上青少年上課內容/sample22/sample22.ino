@@ -2,11 +2,13 @@
 
 #define LIGHT_SENSOR A1
 #define LIGHT_DIGITOR A0
+#define SPEED 100
 
 //一開始要取得目前光線的平均值
 //光線變暗時,向左或向右旋轉3秒
 MatrixMini Mini;
 int lightAvg;
+
 void setup() {
   Mini.begin();
   Serial.begin(9600);
@@ -28,11 +30,11 @@ void loop() {
     switch(diffentValue % 2){
       case 0:
       Serial.println("正轉");
-      turn(50);
+      turn(SPEED);
       break;
       case 1:
       Serial.println("反轉");
-      turn(-50);
+      turn(-SPEED);
       break;
     }
   }
