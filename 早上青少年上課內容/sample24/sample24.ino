@@ -18,7 +18,7 @@ Thread myThread = Thread();
 void setup() {
   Mini.begin();
   myThread.onRun(detect);
-  myThread.setInterval(50);
+  myThread.setInterval(10);
   pinMode(irLeft, INPUT);
   pinMode(irRight, INPUT);
 }
@@ -33,8 +33,8 @@ void loop() {
 void detect(){
   int leftValue = digitalRead(irLeft);
   int rightValue = digitalRead(irRight);
-  int speed = 50;
-  int slow = 20;
+  int speed = 75;
+  int slow = 75;
   if(leftValue == 0 && rightValue == 0){
     //直走
     running(speed, speed);
