@@ -14,8 +14,8 @@ void loop() {
 
 void oneTurn(){
   //轉360
-  int interval = 3000;
-  int speed = 50;
+  int interval = 1000;
+  int speed = 80;
   Mini.M1.set(speed);
   Mini.M2.set(-speed);
   delay(interval);
