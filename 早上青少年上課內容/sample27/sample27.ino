@@ -23,7 +23,6 @@ Thread myThread = Thread();
 MatrixMini Mini;
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
   Mini.begin();
   pinMode(irLeft, INPUT);
