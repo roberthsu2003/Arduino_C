@@ -20,11 +20,28 @@ void loop() {
 }
 
 void detect_distance(){
+  //測到距離10cm以內,讓小車前進後退
   delay(200);
+  
   int uS = sonar.ping();
+  int distance = uS / US_ROUNDTRIP_CM;
   Serial.print("距離:");
-  Serial.print(uS / US_ROUNDTRIP_CM);
+  Serial.print(distance);
   Serial.println("cm");
+  int interval = 1000;
+  int speed = 50;
+  
+  if(distance <= 10 && distance != 0){
+    Mini.M1.set(-speed);
+    Mini.M2.set(-speed);
+    delay(interval);
+    Mini.M1.set(speed);
+    Mini.M2.set(speed);
+    delay(interval);
+    Mini.M1.set(0);
+    Mini.M2.set(0);
+  }
+  
 }
 
 void oneTurn(){
