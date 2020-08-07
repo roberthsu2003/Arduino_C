@@ -1,7 +1,7 @@
 #include <MatrixMini.h>
 #include <NewPing.h>
-#define TRIGGER_PIN A1
-#define ECHO_PIN A0
+#define TRIGGER_PIN A0
+#define ECHO_PIN A1
 #define MAX_DISTANCE 200
 
 MatrixMini Mini;
