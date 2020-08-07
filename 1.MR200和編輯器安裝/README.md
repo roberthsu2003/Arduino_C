@@ -288,8 +288,8 @@ void loop() {
 
 ```c++
 //安裝在A1孔
-//藍線A0 - Echo
-//白線A1 - Trig
+//藍線A0 - Trig
+//白線A1 - Echo
 //安裝NewPing Library
 
 #include <NewPing.h>

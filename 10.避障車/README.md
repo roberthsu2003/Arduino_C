@@ -32,6 +32,9 @@ void oneTurn(){
 ![超音波感測器](IMG_0463.jpg)
 
 ```c++
+//藍線A0 - Trig
+//白線A1 - Echo
+
 #include <MatrixMini.h>
 #include <NewPing.h>
 #define TRIGGER_PIN A0
@@ -95,8 +98,8 @@ void oneTurn(){
 
 ```c++
 //小車循跡S區線，終點使用障礙物，讓小車轉一圈後循跡S區線，回到起點
-//藍線A0 - Echo
-//白線A1 - Trig
+//藍線A0 - Trig
+//白線A1 - Echo
 //安裝NewPing Library
 //人面對背面方向
 //D1插孔 - 紅外線左模組
@@ -200,7 +203,8 @@ void oneTurn(){
 ```
 ### 取得360度測試的距離
 ```c++
-
+//藍線A0 - Trig
+//白線A1 - Echo
 //安裝NewPing Library
 
 #include <NewPing.h>
@@ -275,8 +279,8 @@ void recordTimeAndDisctance(unsigned long ts[], int ds[], int n){
 
 ### 分析那一個時間的距離最遠
 ```c++
-//藍線A0 - Echo
-//白線A1 - Trig
+//藍線A0 - Trig
+//白線A1 - Echo
 //安裝NewPing Library
 
 #include <NewPing.h>
@@ -397,8 +401,8 @@ Serial.println("==========================");
 [避障(偵測無障礙空間)](https://youtu.be/HxvQXAvaBUI)
 
 ```c++
-//藍線A0 - Echo
-//白線A1 - Trig
+//藍線A0 - Trig
+//白線A1 - Echo
 //安裝NewPing Library
 
 #include <NewPing.h>
