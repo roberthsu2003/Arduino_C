@@ -1,0 +1,96 @@
+//小車循跡S區線，終點使用障礙物，讓小車轉一圈後循跡S區線，回到起點
+//藍線A0 - Trig
+//白線A1 - Echo
+//安裝NewPing Library
+//人面對背面方向
+//D1插孔 - 紅外線左模組
+//D2插孔- 紅外線右模組
+//白色-0
+//黑色-1
+
+#include <NewPing.h>
+#include <MatrixMini.h>
+#include <Thread.h>
+
+#define TRIGGER_PIN A0
+#define ECHO_PIN A1
+#define MAX_DISTANCE 200
+#define irLeft 2
+#define irRight 3
+
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
+Thread myThread = Thread();
+MatrixMini Mini;
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  Mini.begin();
+  pinMode(irLeft, INPUT);
+  pinMode(irRight, INPUT);
+
+  myThread.onRun(runS);
+  myThread.setInterval(50);
+}
+
+void loop() {
+  if(goOrStop()){
+    if(myThread.shouldRun()){
+      myThread.run();
+    }
+  }else{
+    //停車轉180度
+    Mini.M1.set(0);
+    Mini.M2.set(0);
+    delay(2000);
+    int interval = 500;
+    int speed = 80;
+    Mini.M1.set(speed);
+    Mini.M2.set(-speed);
+    delay(interval);
+    Mini.M1.set(0);
+    Mini.M2.set(0);
+  }
+  
+}
+
+void runS(){
+  Serial.println("runS");
+  int leftValue = digitalRead(irLeft);
+  int rightValue = digitalRead(irRight);
+  int speed = 70;
+  int g = 40;
+  if(leftValue == 0 && rightValue == 0){
+    //直線
+    running(speed, speed);
+    Serial.println("直線");
+  }else if(leftValue == 0 && rightValue == 1){
+    //右轉
+    running(speed, speed-g);
+    Serial.println("右轉");
+  }else if(leftValue == 1 && rightValue == 0){
+    //左轉
+    running(speed-g, speed);
+    Serial.println("左轉");
+  }
+}
+
+void running(int leftMotor, int rightMotor){
+  //M1 = 左輪
+  //M2 = 右輪
+  Mini.M1.set(leftMotor);
+  Mini.M2.set(rightMotor);
+}
+
+bool goOrStop(){
+  int uS = sonar.ping();
+  int distance = uS / US_ROUNDTRIP_CM;
+  Serial.print("Ping");
+  Serial.print(distance);
+  Serial.println("cm");
+  if(distance == 0){
+    return true;
+  }
+
+  return (distance >= 10) ? true: false;
+}
