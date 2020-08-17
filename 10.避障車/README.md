@@ -108,7 +108,6 @@ void oneTurn(){
 //白色-0
 //黑色-1
 
-
 #include <NewPing.h>
 #include <MatrixMini.h>
 #include <Thread.h>
@@ -119,48 +118,39 @@ void oneTurn(){
 #define irLeft 2
 #define irRight 3
 
-NewPing sonar(TRIGGER_PIN,ECHO_PIN,MAX_DISTANCE);
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 Thread myThread = Thread();
 MatrixMini Mini;
 
 void setup() {
   Serial.begin(9600);
-  Mini.begin(); 
-  pinMode(irLeft,INPUT);
-  pinMode(irRight,INPUT);
-  //oneTurn();//測試轉一圈
-  //while(true);
+  Mini.begin();
+  pinMode(irLeft, INPUT);
+  pinMode(irRight, INPUT);
+
   myThread.onRun(runS);
   myThread.setInterval(50);
 }
 
 void loop() {
-  if (goOrStop()){
+  if(goOrStop()){
     if(myThread.shouldRun()){
-      myThread.run(); 
+      myThread.run();
     }
   }else{
-    //停車
+    //停車轉180度
     Mini.M1.set(0);
     Mini.M2.set(0);
     delay(2000);
-    oneTurn();
+    int interval = 500;
+    int speed = 80;
+    Mini.M1.set(speed);
+    Mini.M2.set(-speed);
+    delay(interval);
+    Mini.M1.set(0);
+    Mini.M2.set(0);
   }
-  delay(1);
- 
-}
-
-bool goOrStop(){
-  int uS= sonar.ping();
-  int distance = uS / US_ROUNDTRIP_CM;
   
-  Serial.print("Ping: ");
-  Serial.print(uS / US_ROUNDTRIP_CM);
-  Serial.println("cm");
-  if (distance == 0){
-    return true;
-  }
-  return (distance > 10) ?  true : false;  
 }
 
 void runS(){
@@ -191,16 +181,17 @@ void running(int leftMotor, int rightMotor){
   Mini.M2.set(rightMotor);
 }
 
-void oneTurn(){
-  //轉180
-  int interval = 1850;
-  int speed = 30;
-  Mini.M1.set(speed);
-  Mini.M2.set(-speed);
-  delay(interval);
-  Mini.M1.set(0);
-  Mini.M2.set(0);
- 
+bool goOrStop(){
+  int uS = sonar.ping();
+  int distance = uS / US_ROUNDTRIP_CM;
+  Serial.print("Ping");
+  Serial.print(distance);
+  Serial.println("cm");
+  if(distance == 0){
+    return true;
+  }
+
+  return (distance >= 10) ? true: false;
 }
 
 ```
