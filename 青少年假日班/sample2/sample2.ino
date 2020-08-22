@@ -12,7 +12,7 @@ void setup() {
       break;
     }
   }
-
+  
   Serial.print("Hello! 您的英文分數是:");
   Serial.println(englishScore);
 
