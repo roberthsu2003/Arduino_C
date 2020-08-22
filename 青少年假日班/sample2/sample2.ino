@@ -3,7 +3,7 @@
 
 void setup() {
   Serial.begin(9600);
-  int englishScore = 60;
+  byte englishScore = 60;
   Serial.println("請輸入您的英文分數:");
   //等待使用者輸入
   while(true){
