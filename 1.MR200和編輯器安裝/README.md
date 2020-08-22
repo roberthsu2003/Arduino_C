@@ -14,6 +14,10 @@
 ### MR200-MINI-小車-組裝影片
 [![MR200-MINI-小車-組裝影片](MR200.jpg)](https://www.youtube.com/playlist?list=PLLVBR5MLJ8AW4XOThhsSQz_84RyxFMdV0)
 
+### 安裝小車資源庫
+草稿碼 -> 匯入程式庫 -> 管理程式庫 
+輸入:Matrix Mini
+
 ### 按鈕測試
 
 ```c++
