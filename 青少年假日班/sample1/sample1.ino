@@ -6,12 +6,20 @@ void setup() {
   Mini.begin(); 
   Serial.begin(9600);
 
-  Serial.println("\n Matrix Mini Button Test \n");
+  Serial.println("\n Matrix Mini Button LED Test \n");
 }
 
 void loop() {
-  Serial.print("  Button 1: "); Serial.print(Mini.BTN1.get());
-  Serial.print("\tButton 2: "); Serial.print(Mini.BTN2.get());
-  Serial.println();
+  if(Mini.BTN1.get()) 
+    Mini.LED1.setRGB(255,0, 0);
+  else
+    Mini.LED1.setRGB(0,0, 0);
+
+
+  if(Mini.BTN2.get()) 
+    Mini.LED2.setRGB(0,255, 0);
+  else
+    Mini.LED2.setRGB(0,0, 0);
+  
   delay(50);
 }
