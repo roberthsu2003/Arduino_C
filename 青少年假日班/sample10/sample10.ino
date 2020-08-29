@@ -8,7 +8,9 @@ void setup() {
       password =Serial.readString();
       if(password == "1234"){
         Serial.println("密碼正確!歡迎光臨!");
-      }      
+      }else{
+        Serial.println("密碼錯誤!請重新輸入!");      
+      }
       break;
     }
   }
