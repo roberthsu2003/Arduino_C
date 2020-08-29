@@ -137,6 +137,10 @@ void setup() {
   Serial.print('\'');
   Serial.print(characterA);
   Serial.println('\'');
+  
+  Serial.print("\n");
+  //字串相加
+  Serial.print("characterA=\'"+ (String)characterA + "\'");
 
   char characterB;
   characterB = 65;
@@ -144,6 +148,10 @@ void setup() {
   Serial.print('\'');
   Serial.print(characterB);
   Serial.println('\'');
+  
+  Serial.print("\n");
+  //字串相加
+  Serial.print("characterB=\'"+ (String)characterB + "\'");
 }
 
 void loop() {
