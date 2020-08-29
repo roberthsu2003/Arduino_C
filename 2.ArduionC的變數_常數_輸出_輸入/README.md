@@ -240,6 +240,7 @@ cout << "圓面積=" << PI * radius * radius;
 
 ```c++
 //arduinoC
+//arduino已經有訂義PI
 int radius = 10;
 
 void setup() {
