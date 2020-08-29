@@ -159,6 +159,7 @@ void loop() {
 }
 
 ```
+
 ## 字串型別(string)
 ```c++
 string str1;
@@ -191,6 +192,7 @@ void loop() {
 }
 
 ```
+
 ## 布林型別(bool)
 ```c++
 bool bolA = true;
@@ -213,10 +215,8 @@ void setup() {
   bool bolA = true;
   bool bolB = false;
 
-  Serial.print("bolA=");
-  Serial.println(bolA);
-  Serial.print("bolB=");
-  Serial.println(bolB);
+  Serial.println("bolA=" + (String)bolA);
+  Serial.println("bolB=" + (String)bolB);
 }
 
 void loop() {
