@@ -347,11 +347,10 @@ void setup() {
 
   int sum = chinese + english + math;
   float average = sum / 3.0;
-  Serial.print("您的總分是:");
-  Serial.println(sum);
+  Serial.println("您的總分是:" + (String)sum);
 
-  Serial.print("您的平均是:");
-  Serial.println(average);
+  Serial.println("您的平均是:" + (String)average);
+
   
 
 }
