@@ -315,11 +315,13 @@ do{
 請輸入密碼:5678
 恭喜!您的密碼正確了!請進
 //============================================================================
-//copy sound.h和sound.cpp
-#include "sound.h"
+//在libraries內建立sound目錄,並且將 sound.h和sound.cpp 複制到sound目錄內
 //蜂鳴器接D1
+#include "sound.h"
+#define BUZZER 3
 String password;
-Sound s(3);
+Sound buzzer(BUZZER);
+
 void setup() {
   Serial.begin(9600);  
   
@@ -332,10 +334,10 @@ void setup() {
         break;
       }
     }
-    s.beep(200);
+    buzzer.beep(200);
   }while(password != "5678");
   Serial.println("恭喜!你的密碼正確了!請進");
-  s.bee();
+  buzzer.bee();
  
 }
 
