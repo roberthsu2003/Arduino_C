@@ -166,44 +166,37 @@ if (條件式一){
 實付金額是:104000元
 
 //========================================================
-
-
-
 // Name        : discount.ino
 //輸入顧客購買金額，若金額在100000元打8折，50000打85折，30000打9折，10000打95折
 
-//ArduinoC
+long money;
+long payMoney;
+
 void setup() {
   Serial.begin(9600);
-  Serial.print("請輸入購買金額:");  
+  Serial.println("請輸入購買金額:");
 }
 
 void loop() {
-  //必需使用long, 不然會超出範圍
-  long money;
-  long payMoney;
   if(Serial.available()){
-      money = Serial.parseInt();
-      Serial.print("您購買的金額是:");
-      Serial.println(money);
-      
-      if(money >= 100000){
-        payMoney = money * 0.8;
-      }else if(money >= 50000){
-        payMoney = money * 0.85;
-      }else if(money >= 30000){
-        payMoney = money * 0.9;
-      }else if (money >= 10000){
-        payMoney = money * 0.95;
-      }else{
-        payMoney = money;
-      }
-      Serial.print("實付金額是:");
-      Serial.print(payMoney);
-      Serial.println("元");   
-      Serial.println("========================");
-  }
+    money = Serial.parseInt();
+    Serial.println("您購買的金額:" + String(money));
 
+    if(money >= 100000){
+      payMoney = money * 0.8;
+    }else if(money >= 50000){
+      payMoney = money * 0.85;
+    }else if(money >= 30000){
+      payMoney = money * 0.9;
+    }else if(money >= 10000){
+      payMoney = money * 0.95;
+    }else{
+      payMoney = money;
+    }
+
+    Serial.println("實付金額是:" + String(payMoney) + "元");
+    Serial.println("=====================================");
+  }
 }
 ```
 
