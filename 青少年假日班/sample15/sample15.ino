@@ -38,6 +38,7 @@ void setup() {
     while(true){
       if(Serial.available()){
         n = Serial.parseInt();
+        Serial.println(n);
         sum += n;
         break;
       }
