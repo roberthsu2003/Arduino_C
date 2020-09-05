@@ -9,6 +9,7 @@ Sound buzzer(BUZZER);
 int guess;
 int min = 1;
 int max = 99;
+int keyin;
   
 void setup() {
   Serial.begin(9600);
@@ -30,6 +31,16 @@ void loop() {
   randomSeed(millis());
   guess = random(min, max+1);
   Serial.println(guess);
-  while(true);
+  do{
+    Serial.print("猜數字範圍" + String(min) + "~" + String(max) + ":");
+    while(true){
+      if(Serial.available()){
+        keyin = Serial.parseInt();
+        buzzer.beep(200);
+        Serial.println(keyin);
+        break;
+      }
+    }
+  }while(true);
 
 }
