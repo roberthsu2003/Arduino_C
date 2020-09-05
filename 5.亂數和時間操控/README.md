@@ -117,7 +117,7 @@ void setup() {
   // set the digital pin as output:
   Serial.begin(9600);
   Mini.begin();
-  randomSeed(analogRead(A0));
+  randomSeed(analogRead(A0+ millis()/2));
 }
 
 void loop() {
