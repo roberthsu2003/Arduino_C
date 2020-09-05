@@ -44,8 +44,8 @@ void loop() {
       Mini.LED2.setRGB(r, g, b);
     }else{
       ledState = LOW;
-      Mini.LED1.setRGB(r,g,b);
-      Mini.LED2.setRGB(r, g, b);
+      Mini.LED1.setRGB(0,0,0);
+      Mini.LED2.setRGB(0,0,0);
     }
   }
 
