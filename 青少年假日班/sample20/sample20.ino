@@ -10,6 +10,7 @@ int guess;
 int min = 1;
 int max = 99;
 int keyin;
+int count = 0;
   
 void setup() {
   Serial.begin(9600);
@@ -30,17 +31,36 @@ void setup() {
 void loop() {
   randomSeed(millis());
   guess = random(min, max+1);
-  Serial.println(guess);
   do{
     Serial.print("猜數字範圍" + String(min) + "~" + String(max) + ":");
     while(true){
       if(Serial.available()){
         keyin = Serial.parseInt();
+        count++;
         buzzer.beep(200);
         Serial.println(keyin);
         break;
       }
     }
-  }while(true);
 
+    if(keyin >= min && keyin <= max){
+      if(keyin == guess){
+        Serial.println("賓果!猜對了,答案是" + (String)guess);
+        Serial.println("您猜了" + String(count) + "次\n");
+        buzzer.melodySound();
+        break;
+      }else if(keyin > guess){
+        Serial.println("再小一點!");
+        max = keyin;
+      }else if(keyin < guess){
+         Serial.println("再大一點!");
+         min = keyin;
+      }
+      Serial.println("您猜了" + String(count) + "次\n");
+    }else{
+      Serial.println("請輸入提示範圍內的數字!\n");
+    }
+  }while(true);
+  Serial.println("Game Over!!!");
+  while(true);
 }
