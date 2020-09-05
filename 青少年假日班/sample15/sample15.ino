@@ -41,8 +41,7 @@ void setup() {
         sum += n;
         break;
       }
-    }  
-    
+    }
   }
 
   Serial.print("本星期的支出為:"+ String(sum) + "元");
