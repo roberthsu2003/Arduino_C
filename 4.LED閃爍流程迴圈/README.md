@@ -230,7 +230,7 @@ long deposit = 0;
 int num=0;
 
 //接收使用者輸入的值
-int inputNum;
+long inputNum;
 
 void setup() {
   Serial.begin(9600);
