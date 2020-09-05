@@ -20,7 +20,7 @@ void setup() {
     if(Serial.available()){
       int inputNum = Serial.parseInt();
       Serial.println(inputNum);
-      randomSeed(inputNum);
+      randomSeed(inputNum+(millis()/2));
       break;
     }
   }
