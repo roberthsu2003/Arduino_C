@@ -18,7 +18,7 @@ void setup() {
   Serial.begin(9600);
   Mini.begin();
   myThread.onRun(detect);
-  myThread.setInterval(50);
+  myThread.setInterval(10);
   
   pinMode(irLeft, INPUT);
   pinMode(irRight, INPUT);
@@ -26,17 +26,19 @@ void setup() {
 }
 
 void loop() {
+  
   if(myThread.shouldRun()){
     myThread.run();
   }
-
+  
+  
 }
 
 void detect(){
   int leftValue = digitalRead(irLeft);
   int rightValue = digitalRead(irRight);
-  int speed1 = 50;
-  int g = 20;
+  int speed1 = 70;
+  int g = 70;
   Serial.println("left:"+String(leftValue));
   Serial.println("right:" +String(rightValue));
   if(leftValue == 0 && rightValue == 0){
