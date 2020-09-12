@@ -172,14 +172,14 @@ void sub2(int tempary[], int count){
 // Name        : average.ino
 //使用超音波測計算每收集10個的平均距離
 
-//藍線A0 - Echo
-//白線A1 - Trig
+//藍線A0 - Trig
+//白線A1 - Echo
 
 
 #include <NewPing.h>
 #include <Thread.h> 
-#define TRIGGER_PIN  A1
-#define ECHO_PIN     A0
+#define TRIGGER_PIN  A0
+#define ECHO_PIN     A1
 #define MAX_DISTANCE 200
 
  
