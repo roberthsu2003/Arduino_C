@@ -1,10 +1,6 @@
-int scores[3];
-
+int scores[3] = {70, 80, 90};
 void setup() {
-  Serial.begin(9600);
-  scores[0] = 70;
-  scores[1] = 80;
-  scores[2] = 90;
+  Serial.begin(9600); 
 
   Serial.println(scores[0]);
   Serial.println(scores[1]);
