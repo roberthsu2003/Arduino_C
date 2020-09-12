@@ -213,9 +213,13 @@ void callBack(){
     sumDis = 0;
   }
   
-  int uS = sonar.ping();  
-  distances[count] = uS / US_ROUNDTRIP_CM;
-  count++;
+  int uS = sonar.ping();
+  if (uS != 0){
+	  distances[count] = uS / US_ROUNDTRIP_CM;
+	  count++;
+  }  
+  
+  
 }
 ```
 
