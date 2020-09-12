@@ -1,8 +1,11 @@
 #include <Thread.h>
+#include <ThreadController.h>
+
 Thread timeThread1000 = Thread();
 Thread timeThread1300 = Thread();
 Thread timeThread500 = Thread();
 
+ThreadController controller = ThreadController();
 
 void setup() {
   Serial.begin(9600);
@@ -12,6 +15,9 @@ void setup() {
   timeThread500.setInterval(500);
   timeThread1300.onRun(callBack1300);
   timeThread1300.setInterval(1300);
+  controller.add(&timeThread1000);
+  controller.add(&timeThread500);
+  controller.add(&timeThread1300);
 }
 
 void callBack1000(){
@@ -27,17 +33,5 @@ void callBack500(){
 }
 
 void loop() {
- 
-  if(timeThread1000.shouldRun()){
-    timeThread1000.run();
-  }
-
-  if(timeThread500.shouldRun()){
-    timeThread500.run();
-  }
-
-  if(timeThread1300.shouldRun()){
-    timeThread1300.run();
-  }
-
+  controller.run();
 }
