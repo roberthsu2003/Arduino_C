@@ -36,8 +36,8 @@ void callBack(){
     Mini.LED1.setRGB(r, g, b);
     Mini.LED2.setRGB(r, g, b);
   }else{
-    Mini.LED1.setRGB(r, g, b);
-    Mini.LED2.setRGB(r, g, b);
+    Mini.LED1.setRGB(0, 0, 0);
+    Mini.LED2.setRGB(0, 0, 0);
   }
 }
 
