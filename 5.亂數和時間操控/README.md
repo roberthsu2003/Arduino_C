@@ -286,6 +286,7 @@ void callBack(){
 ```
 
 ```c++
+//使用ThreadController,來管理多個Thread
 
 #include <Thread.h>
 #include <ThreadController.h>
