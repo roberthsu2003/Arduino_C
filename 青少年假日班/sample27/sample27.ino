@@ -7,7 +7,13 @@ void setup() {
   Serial.begin(9600);
 
   Serial.println("\n Matrix Mine 直流馬達測試 \n");
-  int i = 30;
+  int i = 60;
+  Mini.M1.set(i);
+  Mini.M2.set(i);
+  delay(3000);
+  Mini.M1.set(i);
+  Mini.M2.set(-i);
+  delay(1000);
   Mini.M1.set(i);
   Mini.M2.set(i);
   delay(3000);
