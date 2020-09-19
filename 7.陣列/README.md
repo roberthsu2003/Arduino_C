@@ -108,11 +108,7 @@ void setup() {
   }
 
   ave = (double)sum / nums;
-  Serial.print("全班總成績為:");
-  Serial.print(sum);
-  Serial.print("分,平均為");
-  Serial.print(ave);
-  Serial.println("分");
+  Serial.print("全班總成績為:" + String(sum) + "分,平均為" + String(ave) + "分");
 }
 
 void loop() {
