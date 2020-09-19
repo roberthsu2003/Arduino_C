@@ -25,8 +25,16 @@ void setup() {
   Mini.M2.set(0);
 
   for(int i=0; i<count; i++){
-    Serial.println(distances[i]);
+    if(distances[i] == 0){
+      Serial.println(i);
+      Mini.M1.set(50);
+      Mini.M2.set(-50);
+      delay(100*(i));
+      break;
+    }
   }
+  Mini.M1.set(0);
+  Mini.M2.set(0);
 
 }
 
