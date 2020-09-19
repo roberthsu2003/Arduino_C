@@ -48,6 +48,8 @@ void runS(){
   }else if(leftValue == 1 && rightValue == 0){
     //左轉
     running(speed-g, speed);
+  }else{
+    running(0,0);
   }
 }
 
