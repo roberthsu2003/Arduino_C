@@ -200,7 +200,7 @@ bool goOrStop(){
 ```
 
 ### 瘋狂小車
-[瘋狂小車](https://youtu.be/MARWJyW2ELY)
+[瘋狂小車影片](https://youtu.be/MARWJyW2ELY)
 
 ```
 //藍線A0 - Trig
