@@ -1,3 +1,4 @@
+//只要距離為超過100就停止
 #include <MatrixMini.h>
 #include <NewPing.h>
 #define TRIGGER_PIN A0
@@ -8,7 +9,7 @@ MatrixMini Mini;
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
 const int count=20;
-int distances[20];
+
 
 void setup() {
   Mini.begin();
@@ -18,23 +19,16 @@ void setup() {
     Mini.M1.set(50);
     Mini.M2.set(-50);
     int uS = sonar.ping();
-    distances[i] = uS / US_ROUNDTRIP_CM;
+    if(uS == 0){
+      break;
+    }
+    
     delay(100);
   }
   Mini.M1.set(0);
   Mini.M2.set(0);
 
-  for(int i=0; i<count; i++){
-    if(distances[i] == 0){
-      Serial.println(i);
-      Mini.M1.set(50);
-      Mini.M2.set(-50);
-      delay(100*(i));
-      break;
-    }
-  }
-  Mini.M1.set(0);
-  Mini.M2.set(0);
+ 
 
 }
 
