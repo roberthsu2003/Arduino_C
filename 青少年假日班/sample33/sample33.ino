@@ -6,10 +6,15 @@
 
 #include <Thread.h>
 #include <MatrixMini.h>
+#include <NewPing.h>
 
 #define irLeft 2
 #define irRight 3
+#define TRIGGER_PIN A0
+#define ECHO_PIN A1
+#define MAX_DISTANCE 200
 
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 Thread myThread = Thread();
 MatrixMini Mini;
 
@@ -24,9 +29,24 @@ void setup() {
 }
 
 void loop() {
-  if(myThread.shouldRun()){
-    myThread.run();
+  if(goOrStop()){
+    if(myThread.shouldRun()){
+      myThread.run();
+    }
+  }else{
+    //停車轉180度
+    Mini.M1.set(0);
+    Mini.M2.set(0);
+    delay(1000);
+    int interval = 500;
+    int speed = 80;
+    Mini.M1.set(speed);
+    Mini.M2.set(-speed);
+    delay(interval);
+    Mini.M1.set(0);
+    Mini.M2.set(0);
   }
+  
 
 }
 
@@ -56,4 +76,14 @@ void runS(){
 void running(int leftMotor,int rightMotor){
   Mini.M1.set(leftMotor);
   Mini.M2.set(rightMotor);
+}
+
+bool goOrStop(){
+  int uS = sonar.ping();
+  int distance = uS / US_ROUNDTRIP_CM;
+  if(distance == 0){
+    return true;
+  }
+
+  return (distance >= 10) ? true: false;
 }
