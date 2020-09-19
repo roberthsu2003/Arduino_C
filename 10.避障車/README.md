@@ -171,6 +171,9 @@ void runS(){
     //左轉
     running(speed-g, speed);
     Serial.println("左轉");
+  }else{
+   //停止
+    running(0,0)
   }
 }
 
@@ -195,6 +198,7 @@ bool goOrStop(){
 }
 
 ```
+
 ### 取得360度測試的距離
 ```c++
 //藍線A0 - Trig
