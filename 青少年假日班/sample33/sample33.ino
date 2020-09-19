@@ -5,18 +5,22 @@
 //黑色-1
 
 #include <Thread.h>
+#include <MatrixMini.h>
 
 #define irLeft 2
 #define irRight 3
 
 Thread myThread = Thread();
+MatrixMini Mini;
 
 void setup() {
   Serial.begin(9600);
+  Mini.begin();
   pinMode(irLeft,INPUT);
   pinMode(irRight,INPUT);
   myThread.onRun(runS);
-  myThread.setInterval(500);
+  myThread.setInterval(50);
+  delay(1000);
 }
 
 void loop() {
@@ -26,11 +30,28 @@ void loop() {
 
 }
 
+int speed = 70;
+int g=40;
+
 void runS(){
   Serial.println("0.05Run");
   int leftValue = digitalRead(irLeft);
   int rightValue = digitalRead(irRight);
-  Serial.println("leftValue=" + String(leftValue));
-  Serial.println("rightValue=" + String(rightValue));
-  
+  //Serial.println("leftValue=" + String(leftValue));
+  //Serial.println("rightValue=" + String(rightValue));
+  if (leftValue == 0 && rightValue == 0){
+    //直走
+    running(speed, speed);
+  }else if(leftValue == 0 && rightValue == 1){
+    //右轉
+    running(speed, speed-g);  
+  }else if(leftValue == 1 && rightValue == 0){
+    //左轉
+    running(speed-g, speed);
+  }
+}
+
+void running(int leftMotor,int rightMotor){
+  Mini.M1.set(leftMotor);
+  Mini.M2.set(rightMotor);
 }
