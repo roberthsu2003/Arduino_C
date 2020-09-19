@@ -13,6 +13,8 @@
 */
 const int nums = 5;
 int scores[nums];
+int sum=0;
+double ave;
 
 void setup() {
   Serial.begin(9600);
@@ -29,8 +31,11 @@ void setup() {
 
   for(int i=0; i<nums; i++){
     Serial.println("scores[" + String(i) + "]=" + String(scores[i]) );
+    sum += scores[i];
   }
 
+  ave = (double)sum / nums;
+  Serial.print("全班總成績為:" + String(sum) + "分,平均為" + String(ave) + "分");
 }
 
 void loop() {
