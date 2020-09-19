@@ -92,10 +92,8 @@ double ave;
 
 void setup() {
   Serial.begin(9600);
-  for(int i=0; i<nums; i++){
-    Serial.print("請輸入第");
-    Serial.print(i+1);
-    Serial.print("位學生的成績:");
+  for(int i=0;i<nums; i++){
+    Serial.print("請輸入第" + String(i+1) + "位學生的成績:");
     while(true){
       if(Serial.available()){
         scores[i] = Serial.parseInt();
@@ -104,7 +102,7 @@ void setup() {
       }
     }    
   }
-
+  
   for(int i=0; i<nums; i++){
     sum += scores[i];
   }
