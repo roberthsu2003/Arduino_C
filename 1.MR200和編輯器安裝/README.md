@@ -23,7 +23,7 @@
 ```c++
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 
 void setup() {
   Mini.begin(); 
@@ -45,7 +45,7 @@ void loop() {
 ```c++
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 
 void setup() {
   Mini.begin(); 
@@ -75,7 +75,7 @@ void loop() {
 ```c++
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 
 
 void setup() {
@@ -125,7 +125,7 @@ void loop() {
 #define LIGHT_SENSOR A1
 #define LIGHT_DIGHTOR A0
 
-MatrixMini Mini;
+
 
 void setup() {
   Mini.begin();
