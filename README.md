@@ -12,7 +12,7 @@
 
 [USB 驅動程式下載](https://www.kkitc.net/pages/downloads-matrix-mini)
 
-[最新Library下載](https://www.kkitc.net/pages/downloads-matrix-mini)
+[最新Library下載](https://github.com/Matrix-Robotics/MatrixMini)
 
 
 
