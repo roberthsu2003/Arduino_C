@@ -1,18 +1,23 @@
 #include <MatrixMini.h>
 
 void setup() {
-  // put your setup code here, to run once:
   Mini.begin();
   Serial.begin(9600);
-  Serial.println("小車按鈕測試");
+  Serial.println("小車按鈕和RGB LED測試");
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  Serial.print("按鈕1: ");
-  Serial.print(Mini.BTN1.get());
-  Serial.print("按鈕2: ");
-  Serial.print(Mini.BTN2.get());
-  Serial.println();
+  if(Mini.BTN1.get()){
+    Mini.RGB1.setRGB(255,0,0);
+  }else{
+    Mini.RGB1.setRGB(0,0,0);
+  }
+
+  if(Mini.BTN2.get()){
+    Mini.RGB2.setRGB(0,255,0);
+  }else{
+    Mini.RGB2.setRGB(0,0,0);
+  }
   delay(50);
 }
