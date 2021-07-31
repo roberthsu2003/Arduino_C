@@ -21,20 +21,23 @@
 ### 按鈕測試
 
 ```c++
+//MR200
+//MR210
 #include <MatrixMini.h>
 
-
-
 void setup() {
-  Mini.begin(); 
+  // put your setup code here, to run once:
+  Mini.begin();
   Serial.begin(9600);
-
-  Serial.println("\n Matrix Mini Button Test \n");
+  Serial.println("小車按鈕測試");
 }
 
 void loop() {
-  Serial.print("  Button 1: "); Serial.print(Mini.BTN1.get());
-  Serial.print("\tButton 2: "); Serial.print(Mini.BTN2.get());
+  // put your main code here, to run repeatedly:
+  Serial.print("按鈕1: ");
+  Serial.print(Mini.BTN1.get());
+  Serial.print("按鈕2: ");
+  Serial.print(Mini.BTN2.get());
   Serial.println();
   delay(50);
 }
@@ -43,29 +46,29 @@ void loop() {
 ### RGBLED測試
 
 ```c++
+//MR200
+//MR210
 #include <MatrixMini.h>
 
-
-
 void setup() {
-  Mini.begin(); 
+  Mini.begin();
   Serial.begin(9600);
-
-  Serial.println("\n Matrix Mini Button LED Test \n");
+  Serial.println("小車按鈕和RGB LED測試");
 }
 
 void loop() {
-  if(Mini.BTN1.get()) 
-    Mini.RGB1.setRGB(255,0, 0);
-  else
-    Mini.RGB1.setRGB(0,0, 0);
+  // put your main code here, to run repeatedly:
+  if(Mini.BTN1.get()){
+    Mini.RGB1.setRGB(255,0,0);
+  }else{
+    Mini.RGB1.setRGB(0,0,0);
+  }
 
-
-  if(Mini.BTN2.get()) 
-    Mini.RGB2.setRGB(0,255, 0);
-  else
-    Mini.RGB2.setRGB(0,0, 0);
-  
+  if(Mini.BTN2.get()){
+    Mini.RGB2.setRGB(0,255,0);
+  }else{
+    Mini.RGB2.setRGB(0,0,0);
+  }
   delay(50);
 }
 ```
@@ -74,9 +77,6 @@ void loop() {
 
 ```c++
 #include <MatrixMini.h>
-
-
-
 
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
