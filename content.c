@@ -1,28 +1,32 @@
 #include <MatrixMini.h>
-#define LIGHT_SENSOR A1
-#define LIGHT_DIGITAL A0
 
 void setup() {
-  Mini.begin();
-  Serial.begin(9600);
-  Serial.println("============光每電阻測試=============");
-  pinMode(LIGHT_DIGITAL,INPUT);
+  Mini.begin();  // create with the default frequency 1.6KHz
+  Serial.begin(9600);           // set up Serial library at 9600 bps
+
+  
+  Serial.println("\n Matrix Mini DC Motor Test \n");
+
+  Mini.M1.set(0);
+  Mini.M2.set(0);
 }
 
+
 void loop() {
-  Serial.println("==========光敏電阻數位訊號輸出==============");
-  bool digitalValue=digitalRead(LIGHT_DIGITAL);
-  Serial.println("數位訊號是:" + String(digitalValue));
-  Serial.println("\n\n");
-  Serial.println("==========光敏電阻類比訊號輸出==============");
-  int analogValue=analogRead(LIGHT_SENSOR);
-  Serial.println("類比訊號是:" + String(analogValue));
-  if(digitalValue == 0){
-    Mini.RGB1.setRGB(0,0,0);
-    Mini.RGB2.setRGB(0,0,0);
-  }else{
-    Mini.RGB1.setRGB(255,0,0);
-    Mini.RGB2.setRGB(255,0,0);
+  int i;
+  
+  Serial.println("One way");
+  for (i=-100; i<100; i++) {
+    Mini.M1.set(i);  
+    Mini.M2.set(i);
+    delay(15);
   }
-  delay(1000);
+  
+  Serial.println("Or another");
+  for (i=100; i>-100; i--) {
+    Mini.M1.set(i);  
+    Mini.M2.set(i);
+    delay(15);
+  }
+  
 }
