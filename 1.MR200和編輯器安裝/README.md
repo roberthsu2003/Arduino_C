@@ -88,6 +88,9 @@ void loop() {
 [直流馬達接線圖](../8.前進_後退_旋轉)
 
 ```c++
+//MR200
+//MR210
+
 #include <MatrixMini.h>
 
 void setup() {
@@ -124,9 +127,11 @@ void loop() {
 
 ### 光敏電阻測試
 
-![光敏電阻接線圖](IMG_0459.jpg)  
+![M200,M210-光敏電阻接線圖](IMG_0459.jpg)  
 
 ```c++
+//M200
+//M210
 //使用光敏電阻,檢查目前的亮度
 //插入至Ａ1孔
 //pin A1-白色線(類比訊號)
@@ -136,8 +141,6 @@ void loop() {
 #include <MatrixMini.h>
 #define LIGHT_SENSOR A1
 #define LIGHT_DIGHTOR A0
-
-
 
 void setup() {
   Mini.begin();
@@ -164,13 +167,14 @@ void loop() {
 ![蜂鳴器接線圖](IMG_0460.jpg)
 
 ```c++
+//MR200,MR210
 //蜂鳴器
 /*
 插入到D1孔 
- I/O腳接 pin3
+I/O腳接 pin3
 Melody
-
 */
+
 #define NOTE_B0  31
 #define NOTE_C1  33
 #define NOTE_CS1 35
