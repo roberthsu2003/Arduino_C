@@ -7,12 +7,6 @@
 
 ![以上圖片MR200零件](MR2001.jpg)
 
-## MINI MR2100
-[安裝影片](https://www.youtube.com/playlist?list=PLidcX8gLmcRjL_sOMV29cT8j9_DI0INOK)
-
-[USB 驅動程式下載](https://www.kkitc.net/pages/downloads-matrix-mini)
-
-[最新Library下載](https://github.com/Matrix-Robotics/MatrixMini)
 
 
 

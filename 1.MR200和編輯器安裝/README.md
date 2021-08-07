@@ -14,7 +14,18 @@
 ### MR200-MINI-小車-組裝影片
 [![MR200-MINI-小車-組裝影片](MR200.jpg)](https://www.youtube.com/playlist?list=PLLVBR5MLJ8AW4XOThhsSQz_84RyxFMdV0)
 
-### 安裝小車資源庫
+###  MR210小車組裝影片
+[安裝影片](https://www.youtube.com/playlist?list=PLidcX8gLmcRjL_sOMV29cT8j9_DI0INOK)
+
+[USB 驅動程式下載](https://www.kkitc.net/pages/downloads-matrix-mini)
+
+[最新Library下載](https://github.com/Matrix-Robotics/MatrixMini)
+
+備註:可以使用下方的方式安裝資源庫
+
+
+
+### MR200,MR210安裝小車資源庫
 草稿碼 -> 匯入程式庫 -> 管理程式庫 
 輸入:Matrix Mini
 
