@@ -44,7 +44,7 @@ M1,M2接線圖,黑白線不行接反
 
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
   Serial.begin(9600);           // set up Serial library at 9600 bps
@@ -72,7 +72,7 @@ void loop() {
 
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
   Serial.begin(9600);           // set up Serial library at 9600 bps
@@ -100,7 +100,7 @@ void loop() {
 
 #include <MatrixMini.h>
 //前進3秒右轉1秒前進3秒
-MatrixMini Mini;
+
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
   Serial.begin(9600); // set up Serial library at 9600 bps  
@@ -129,7 +129,7 @@ void loop() {
 ```c++
 #include <MatrixMini.h>
 //前進3秒左轉2秒前進3秒
-MatrixMini Mini;
+
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
   Serial.begin(9600); // set up Serial library at 9600 bps  
@@ -168,7 +168,7 @@ void loop() {
 
 //一開始要取得目前光線的平均值
 //光線變暗時,向左或向右旋轉3秒
-MatrixMini Mini;
+
 
 int lightAvg;
 void setup() {
@@ -227,7 +227,7 @@ void turn(int i){
 #define MAX_DISTANCE 200
  
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
-MatrixMini Mini;
+
 
 
 void setup() {

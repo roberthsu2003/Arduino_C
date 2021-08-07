@@ -360,7 +360,7 @@ int median(int ten[]){
 //============================================================
 
 #include <MatrixMini.h>
-MatrixMini Mini;
+
 
 bool buttonState;
 int pressCount=0;

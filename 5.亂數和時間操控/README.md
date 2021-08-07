@@ -104,7 +104,7 @@ void loop() {
 
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 
 bool ledState = LOW;
 //使用 unsigned long可以儲存較多的值
@@ -147,12 +147,12 @@ void loop() {
     }
     if (ledState == LOW) {
       ledState = HIGH;
-      Mini.LED1.setRGB(r, g, b);
-      Mini.LED2.setRGB(r, g, b);
+      Mini.RGB1.setRGB(r, g, b);
+      Mini.RGB2.setRGB(r, g, b);
     } else {
       ledState = LOW;
-      Mini.LED1.setRGB(0, 0, 0);
-      Mini.LED2.setRGB(0, 0, 0);
+      Mini.RGB1.setRGB(0, 0, 0);
+      Mini.RGB2.setRGB(0, 0, 0);
     }
 
   }
@@ -171,7 +171,7 @@ void loop() {
 #include <Thread.h>
 
 //建立小車
-MatrixMini Mini;
+
 //建立時間管理
 Thread timeThread = Thread();
 
@@ -208,11 +208,11 @@ void callBack(){
   }
 
   if(ledStatus == LOW){
-    Mini.LED1.setRGB(r, g, b);
-    Mini.LED2.setRGB(r, g, b);
+    Mini.RGB1.setRGB(r, g, b);
+    Mini.RGB2.setRGB(r, g, b);
   }else{
-    Mini.LED1.setRGB(0, 0, 0);
-    Mini.LED2.setRGB(0, 0, 0);
+    Mini.RGB1.setRGB(0, 0, 0);
+    Mini.RGB2.setRGB(0, 0, 0);
   }
 
   Serial.print("Cool!現在的時間是:");
@@ -241,7 +241,7 @@ void loop() {
 #include <MatrixMini.h>
 #include <Thread.h>
 
-MatrixMini Mini;
+
 Thread myThread = Thread();
 
 bool buttonState;
@@ -274,11 +274,11 @@ void callBack(){
   switch(pressCount % 4){
     case 2:
       Serial.println("按鈕開");
-      Mini.LED1.setRGB(255, 0, 0);
+      Mini.RGB1.setRGB(255, 0, 0);
       break;
     case 0:
       Serial.println("按鈕關");
-      Mini.LED1.setRGB(0, 0, 0);
+      Mini.RGB1.setRGB(0, 0, 0);
       break;
   }
 }

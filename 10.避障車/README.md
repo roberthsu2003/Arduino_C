@@ -3,7 +3,7 @@
 ```c++
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 
 void setup() {
   Mini.begin();
@@ -41,7 +41,7 @@ void oneTurn(){
 #define ECHO_PIN A1
 #define MAX_DISTANCE 200
 
-MatrixMini Mini;
+
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 
 void setup() {
@@ -120,7 +120,7 @@ void oneTurn(){
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 Thread myThread = Thread();
-MatrixMini Mini;
+
 
 void setup() {
   Serial.begin(9600);
@@ -212,7 +212,7 @@ bool goOrStop(){
 #define ECHO_PIN A1
 #define MAX_DISTANCE 200
 
-MatrixMini Mini;
+
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
 int speed = 80;
 
@@ -256,7 +256,7 @@ void loop() {
 #define MAX_DISTANCE 200
  
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
-MatrixMini Mini;
+
 unsigned long startTime;
 void setup() {
   Mini.begin(); 
@@ -332,7 +332,7 @@ void recordTimeAndDisctance(unsigned long ts[], int ds[], int n){
 #define MAX_DISTANCE 200
  
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
-MatrixMini Mini;
+
 unsigned long startTime;
 void setup() {
   Mini.begin(); 
@@ -454,7 +454,7 @@ Serial.println("==========================");
 #define MAX_DISTANCE 200
  
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE);
-MatrixMini Mini;
+
 unsigned long startTime;
 int detectSpeed = 20; //設定偵測的速度
 int runSpeed = 50;

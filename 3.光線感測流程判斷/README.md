@@ -91,7 +91,7 @@ void loop() {
 ```c++
 *question 
 成績及格判斷
-請使用者輸入成績，若成績大於等於60分，則LED1顯示綠燈，否則LED1顯示紅燈。
+請使用者輸入成績，若成績大於等於60分，則RGB1顯示綠燈，否則RGB1顯示紅燈。
 
 顯示:
 請輸入成績:78
@@ -101,11 +101,11 @@ void loop() {
 ```
 //arduinoC
 //成績及格判斷
-//請使用者輸入成績，若成績大於等於60分，則LED1顯示綠燈，否則LED1顯示紅燈。
+//請使用者輸入成績，若成績大於等於60分，則RGB1顯示綠燈，否則RGB1顯示紅燈。
 
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 int score;
 
 void setup() {
@@ -120,13 +120,13 @@ void loop() {
         score = Serial.parseInt();
         if(score>=60){
           Serial.println("及格!");
-          Mini.LED1.setRGB(0, 255, 0);
+          Mini.RGB1.setRGB(0, 255, 0);
         }else{
           Serial.println("不及格");
-          Mini.LED1.setRGB(255, 0, 0);
+          Mini.RGB1.setRGB(255, 0, 0);
         }
         delay(5000);
-        Mini.LED1.setRGB(0, 0, 0);
+        Mini.RGB1.setRGB(0, 0, 0);
         break;   
      }
   }
@@ -136,7 +136,7 @@ void loop() {
 
 ```c++
 *作業
-試用if-else敘述，選寫一個判斷輸入的數字為奇數(LED1亮綠燈)或偶數(LED2亮綠燈)的程式,
+試用if-else敘述，選寫一個判斷輸入的數字為奇數(RGB1亮綠燈)或偶數(RGB2亮綠燈)的程式,
 
 顯示=============
 請輸入數字:15
@@ -221,7 +221,7 @@ void loop() {
 #define LIGHT_SENSOR A1
 #define LIGHT_DIGHTOR A0
 
-MatrixMini Mini;
+
 String state;
 
 void setup() {
@@ -244,28 +244,28 @@ void loop() {
   
   if(analogValue < 100){
     state = "很亮";
-    Mini.LED1.setRGB(0,255,255);
-    Mini.LED2.setRGB(0,255,255);
+    Mini.RGB1.setRGB(0,255,255);
+    Mini.RGB2.setRGB(0,255,255);
   }else if(analogValue < 200){
     state = "亮";
-    Mini.LED1.setRGB(127,255,212);
-    Mini.LED2.setRGB(127,255,212);
+    Mini.RGB1.setRGB(127,255,212);
+    Mini.RGB2.setRGB(127,255,212);
   }else if(analogValue < 400){
     state = "有點亮";
-    Mini.LED1.setRGB(0,139,0);
-    Mini.LED2.setRGB(0,139,0);
+    Mini.RGB1.setRGB(0,139,0);
+    Mini.RGB2.setRGB(0,139,0);
   }else if(analogValue < 600){
     state = "有點暗";
-    Mini.LED1.setRGB(255,0,0);
-    Mini.LED2.setRGB(255,0,0);
+    Mini.RGB1.setRGB(255,0,0);
+    Mini.RGB2.setRGB(255,0,0);
   }else if(analogValue < 800){
     state = "暗";
-    Mini.LED1.setRGB(0,255,0);
-    Mini.LED2.setRGB(0,255,0);
+    Mini.RGB1.setRGB(0,255,0);
+    Mini.RGB2.setRGB(0,255,0);
   }else{
     state = "很暗";
-    Mini.LED1.setRGB(0,0,255);
-    Mini.LED2.setRGB(0,0,255);
+    Mini.RGB1.setRGB(0,0,255);
+    Mini.RGB2.setRGB(0,0,255);
   }  
 
   Serial.print("目前狀態:");
@@ -439,7 +439,7 @@ void loop() {
 //按右按鈕,右燈亮
 
 #include <MatrixMini.h>
-MatrixMini Mini;
+
 
 void setup() {
   Mini.begin();
@@ -449,18 +449,18 @@ void setup() {
 void loop() {
   switch(Mini.BTN1.get()){
     case 1:
-      Mini.LED1.setRGB(255,0,0);
+      Mini.RGB1.setRGB(255,0,0);
       break;
     case 0:
-      Mini.LED1.setRGB(0,0,0);
+      Mini.RGB1.setRGB(0,0,0);
   }
 
   switch(Mini.BTN2.get()){
     case 1:
-      Mini.LED2.setRGB(255,0,0);
+      Mini.RGB2.setRGB(255,0,0);
       break;
     case 0:
-      Mini.LED2.setRGB(0,0,0);
+      Mini.RGB2.setRGB(0,0,0);
   }
   
 
@@ -479,11 +479,11 @@ void loop() {
 ```c++
 //同時按下左按鈕和右按鈕蜂鳴器會呼叫
 //使用邏輯運算子 &&
-//使用MatrixMini,蜂鳴器安裝在D4
+//使用MatrixMini,蜂鳴器安裝在D1
 
 #include <MatrixMini.h>
-#define buzzer 6
-MatrixMini Mini;
+#define buzzer 3
+
 
 void setup() {  
   Mini.begin();
@@ -507,10 +507,11 @@ void loop() {
 //同時按下左按鈕和右按鈕蜂鳴器會呼叫
 //使用巢狀判斷
 //使用MatrixMini
+//buzzer 插D1孔
 
 #include <MatrixMini.h>
-#define buzzer 6
-MatrixMini Mini;
+#define buzzer 3
+
 
 void setup() {  
   Mini.begin();

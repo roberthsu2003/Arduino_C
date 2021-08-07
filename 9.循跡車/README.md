@@ -49,7 +49,7 @@ void loop() {
 #include <MatrixMini.h>
 #include <Thread.h>
 
-MatrixMini Mini;
+
 Thread myThread = Thread();
 //馬達會影響D1,D2
 #define irLeft 2
@@ -125,7 +125,7 @@ void running(int leftMotor, int rightMotor){
 #include <MatrixMini.h>
 #include <Thread.h>
 
-MatrixMini Mini;
+
 Thread myThread = Thread();
 //馬達會影響D1,D2
 #define irLeft 2

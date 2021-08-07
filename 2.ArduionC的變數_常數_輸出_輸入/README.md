@@ -443,7 +443,7 @@ void loop() {
 
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 
 void setup() {
   Mini.begin();
@@ -462,9 +462,9 @@ void loop() {
     value = Serial.parseInt();
     // set the brightness of the LED:
     Serial.println(value,DEC);
-    Mini.LED1.setRGB(value, 0, 0);
+    Mini.RGB1.setRGB(value, 0, 0);
     delay(2000);
-    Mini.LED1.setRGB(0, 0, 0);
+    Mini.RGB1.setRGB(0, 0, 0);
   }
 }
 ```

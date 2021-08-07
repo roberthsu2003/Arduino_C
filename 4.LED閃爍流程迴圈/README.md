@@ -164,7 +164,7 @@ void loop() {
 
 #include <MatrixMini.h>
 
-MatrixMini Mini;
+
 
 void setup() {
   Mini.begin();
@@ -173,9 +173,9 @@ void setup() {
   for(int i=1; i<=5; i++){
     for(int j=1; j<=i; j++){
       Serial.print("#");
-      Mini.LED2.setRGB(255, 0, 0);
+      Mini.RGB2.setRGB(255, 0, 0);
       delay(100);
-      Mini.LED2.setRGB(0, 0, 0);
+      Mini.RGB2.setRGB(0, 0, 0);
       delay(100);
     }
     Serial.println();
@@ -222,7 +222,7 @@ while(n<10){
 #define BUZZER 3
 
 //建立小車
-MatrixMini Mini;
+
 //存款
 long deposit = 0;
 
@@ -236,8 +236,8 @@ void setup() {
   Serial.begin(9600);
   //起動小車
   Mini.begin();
-  Mini.LED1.setRGB(255, 0, 0);
-  Mini.LED2.setRGB(255, 0, 0);
+  Mini.RGB1.setRGB(255, 0, 0);
+  Mini.RGB2.setRGB(255, 0, 0);
   //啟動Buzzer
   pinMode(BUZZER, OUTPUT);
   digitalWrite(BUZZER, HIGH);
@@ -257,13 +257,13 @@ void setup() {
         break;
       }
     }
-    Mini.LED1.setRGB(255, 0, 0);
-    Mini.LED2.setRGB(255, 0, 0);
+    Mini.RGB1.setRGB(255, 0, 0);
+    Mini.RGB2.setRGB(255, 0, 0);
   }
 
   //錢已經存夠了
-  Mini.LED1.setRGB(0, 255, 0);
-  Mini.LED2.setRGB(0, 255, 0);
+  Mini.RGB1.setRGB(0, 255, 0);
+  Mini.RGB2.setRGB(0, 255, 0);
   Serial.print("恭喜!已經存夠了,存了" + String(num) + "個月的總存款為:" + String(deposit) + "元");
   digitalWrite(BUZZER, LOW);
   delay(500);
@@ -367,7 +367,7 @@ while1_s.ino
 #include <MatrixMini.h>
 
 Sound s(6);
-MatrixMini Mini;
+
 
 void setup() {
   Serial.begin(9600);
@@ -492,7 +492,7 @@ void loop() {
 #include <MatrixMini.h>
 
 Sound s(6);
-MatrixMini Mini;
+
 
 void setup() {
   Serial.begin(9600);
@@ -502,11 +502,11 @@ void setup() {
       if(j >= i){
         Serial.print(i);
         s.beep(200);
-        Mini.LED1.setRGB(255,0, 0);        
-        Mini.LED2.setRGB(255,0, 0);
+        Mini.RGB1.setRGB(255,0, 0);        
+        Mini.RGB2.setRGB(255,0, 0);
         delay(200);
-        Mini.LED1.setRGB(0,0, 0);        
-        Mini.LED2.setRGB(0,0, 0);
+        Mini.RGB1.setRGB(0,0, 0);        
+        Mini.RGB2.setRGB(0,0, 0);
 
       }else{
         delay(200);
