@@ -164,7 +164,7 @@ void loop() {
 ```
 
 ### 蜂鳴器測試
-![蜂鳴器接線圖](IMG_0460.jpg)
+![MR200,MR210-蜂鳴器接線圖](IMG_0460.jpg)
 
 ```c++
 //MR200,MR210
@@ -304,9 +304,10 @@ void loop() {
 
 ### 超音波感測器
 
-![超音波感測器](IMG_0463.jpg)
+![MR200,MR210-超音波感測器](IMG_0463.jpg)
 
 ```c++
+//MR200,MR210
 //安裝在A1孔
 //藍線A0 - Trig
 //白線A1 - Echo
@@ -335,7 +336,7 @@ void loop() {
 
 ### 紅外線感測器
 
-![紅外線感測器](IMG_0462.jpg)
+![MR200-紅外線感測器](IMG_0462.jpg)
 
 ```c++
 //人面對背面方向
@@ -366,4 +367,36 @@ void loop() {
 }
 ```
 
+### 灰階紅外線感測器
 
+![MR210-灰階紅外線感測器](pic1.png)
+
+```c++
+//MR210 - 灰階紅外線感應器
+//可以使用類比接收和數位接收
+//接線至MR210-A3孔
+
+#define analogSensor A2
+#define digitalSensor A3
+
+
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int analogValue = analogRead(analogSensor);
+  int digitalValue = digitalRead(digitalSensor);
+  
+  Serial.print("sensorValue");
+  Serial.println(analogValue);
+  Serial.print("digitalValue");
+  Serial.println(digitalValue);
+  delay(500);
+}
+
+```
