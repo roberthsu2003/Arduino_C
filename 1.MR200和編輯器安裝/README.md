@@ -136,14 +136,16 @@ void loop() {
 //插入至Ａ1孔
 //pin A1-白色線(類比訊號)
 //pin A0-藍色線(數位訊號)
+//數位訊號0代表亮,1代表暗
+//類比訊號數值小代表亮
+//類比訊號數值大代表暗
 
 
-#include <MatrixMini.h>
 #define LIGHT_SENSOR A1
 #define LIGHT_DIGHTOR A0
 
 void setup() {
-  Mini.begin();
+  
   Serial.begin(9600);
   Serial.println("==========光敏電阻測試==============");
   pinMode(LIGHT_DIGHTOR, INPUT);
