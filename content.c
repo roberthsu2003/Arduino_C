@@ -3,9 +3,19 @@
 void setup() {
   Mini.begin();
   int i = 30;
+  //前進
   Mini.M1.set(i);
   Mini.M2.set(i);
-  delay(1000);
+  delay(2000);
+  //停
+  Mini.M1.set(0);
+  Mini.M2.set(0);
+  delay(2000);
+  //後退
+  Mini.M1.set(-i);
+  Mini.M2.set(-i);
+  delay(2000);
+  //停
   Mini.M1.set(0);
   Mini.M2.set(0);
 }
