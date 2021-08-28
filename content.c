@@ -1,6 +1,7 @@
 #include <MatrixMini.h>
 #define LIGHT_DIGITOR A0
 
+bool turnOnce = false;
 void setup() {
   Serial.begin(9600);
   pinMode(LIGHT_DIGITOR, INPUT);
@@ -15,6 +16,13 @@ void loop() {
   if (digitalValue == 1){
     Serial.println("向右旋轉");
     turn(30);
+    turnOnce = true;
+  }else{    
+    if(turnOnce == true){
+      Serial.println("向左旋轉");
+      turn(-30);
+    }
+    turnOnce = false;
   }
   delay(300);
 }
