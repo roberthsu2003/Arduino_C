@@ -11,5 +11,8 @@ void loop() {
   Serial.println("=====光敏電阻數位訊號===========");
   bool digitalValue = digitalRead(LIGHT_DIGITOR);
   Serial.println("數位訊號是:"+String(digitalValue));  
-  delay(1000);
+  if (digitalValue == 1){
+    Serial.println("旋轉");
+  }
+  delay(300);
 }
