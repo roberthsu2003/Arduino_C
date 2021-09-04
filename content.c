@@ -17,6 +17,8 @@ void loop() {
   //單向選擇
   if(distance <= 10 && distance != 0){
     Serial.println("障礙物很接近");
+  }else{
+    Serial.println("障礙物超過10公分以上");
   }
   delay(300);
 }
