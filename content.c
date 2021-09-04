@@ -15,7 +15,7 @@ void loop() {
   int uS = sonar.ping();
   int distance = uS / US_ROUNDTRIP_CM;
   //單向選擇
-  if(distance <= 10){
+  if(distance <= 10 && distance != 0){
     Serial.println("障礙物很接近");
   }
   delay(300);
