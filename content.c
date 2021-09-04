@@ -14,7 +14,9 @@ void loop() {
   // put your main code here, to run repeatedly:
   int uS = sonar.ping();
   int distance = uS / US_ROUNDTRIP_CM;
-  Serial.print("前放物件的距離:");
-  Serial.println(String(distance) + "公分");
-  delay(500);
+  //單向選擇
+  if(distance <= 10){
+    Serial.println("障礙物很接近");
+  }
+  delay(300);
 }
