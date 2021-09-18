@@ -6,7 +6,7 @@
  
 
 
-int cm;
+bool previousState = false;
 
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
@@ -19,7 +19,11 @@ void setup() {
 
 void loop() { 
   delay(100);
-  Serial.println(Mini.BTN1.get());  
+  bool currentState = Mini.BTN1.get();
+  if(currentState != previousState){
+    Serial.println("啟動");
+  }
+  
 }
 
 int ping(){
