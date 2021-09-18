@@ -32,6 +32,7 @@ void fireButton(){
     counter += 1;
     if(counter % 2 == 0){
       Serial.println("啟動");
+      fireCar(30);
     }
     previousState = currentState;
   }
@@ -45,6 +46,7 @@ void stopButton(){
     counter += 1;    
     if(counter % 2 == 0){
       Serial.println("停止");
+      stopCar();
     }
     previousState = currentState;
   }
@@ -58,17 +60,12 @@ int ping(){
   return pulseTime / US;
 }
 
-void back(int i){  
+void fireCar(int i){  
   Mini.M1.set(i);  
-  Mini.M2.set(i);
-  delay(1000);
-  Mini.M1.set(0);
-  Mini.M2.set(0);
-  delay(1000);
-  Mini.M1.set(-i);  
-  Mini.M2.set(-i);
-  delay(1000);
-  Mini.M1.set(0);
-  Mini.M2.set(0);
-  
+  Mini.M2.set(i);  
+}
+
+void stopCar(){
+   Mini.M1.set(0);  
+   Mini.M2.set(0);  
 }
