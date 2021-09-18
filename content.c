@@ -1,4 +1,3 @@
- 
 #include <MatrixMini.h>
 #define TRIGGER_PIN  A0
 #define ECHO_PIN     A1
@@ -20,15 +19,15 @@ void setup() {
 
 void loop() { 
   delay(100);
-  cm = ping() / US;
-  Serial.println("距離是"+String(cm));
+  Serial.println(Mini.BTN1.get());  
 }
 
-unsigned long ping(){
+int ping(){
   digitalWrite(TRIGGER_PIN,HIGH);
   delayMicroseconds(10);
   digitalWrite(TRIGGER_PIN,LOW);
-  return pulseIn(ECHO_PIN,HIGH);
+  unsigned long pulseTime = pulseIn(ECHO_PIN,HIGH);
+  return pulseTime / US;
 }
 
 void back(int i){  
