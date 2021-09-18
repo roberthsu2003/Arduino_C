@@ -7,6 +7,7 @@
 
 
 bool previousState = false;
+int counter = 0;
 
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
@@ -19,11 +20,19 @@ void setup() {
 
 void loop() { 
   delay(100);
-  bool currentState = Mini.BTN1.get();
-  if(currentState != previousState){
-    Serial.println("啟動");
-  }
+  fireButton();
   
+}
+
+void fireButton(){
+   bool currentState = Mini.BTN1.get();
+  if(currentState != previousState){    
+    counter += 1;
+    if(counter % 2 == 0){
+      Serial.println("啟動");
+    }
+    previousState = currentState;
+  }
 }
 
 int ping(){
