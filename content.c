@@ -3,6 +3,11 @@
 #define ECHO_PIN     A1
 #define MAX_DISTANCE 200
 #define US 58.1
+ 
+
+
+
+
 
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
@@ -33,15 +38,15 @@ void fireButton(){
 }
 
 void stopButton(){
-  static bool previousState1 = false;
-  static int counter1 = 0;
+  static bool previousState = false;
+  static int counter = 0;
   bool currentState = Mini.BTN2.get();
-  if(currentState != previousState1){    
-    counter1 += 1;
-    if(counter1 % 2 == 0){
+  if(currentState != previousState){    
+    counter += 1;    
+    if(counter % 2 == 0){
       Serial.println("停止");
     }
-    previousState1 = currentState;
+    previousState = currentState;
   }
 }
 
