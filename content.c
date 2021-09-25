@@ -16,7 +16,12 @@ void setup() {
 void loop() { 
   delay(100);
   fireButton();
-  stopButton(); 
+  stopButton();
+  int distance = ping();
+  Serial.println(distance);
+  if(distance <= 10){
+    stopCar();
+  }
 }
 
 void fireButton(){
@@ -27,7 +32,7 @@ void fireButton(){
     counter += 1;
     if(counter % 2 == 0){
       Serial.println("啟動");
-      fireCar(30);
+      fireCar(50);
     }
     previousState = currentState;
   }
