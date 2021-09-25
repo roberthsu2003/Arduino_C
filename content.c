@@ -3,6 +3,7 @@
 #define ECHO_PIN     A1
 #define MAX_DISTANCE 200
 #define US 58.1
+#define SPEED 50
 
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
@@ -20,7 +21,7 @@ void loop() {
   int distance = ping();
   Serial.println(distance);
   if(distance <= 10){
-    stopCar();
+    turnCar();
   }
 }
 
@@ -32,7 +33,7 @@ void fireButton(){
     counter += 1;
     if(counter % 2 == 0){
       Serial.println("啟動");
-      fireCar(50);
+      fireCar();
     }
     previousState = currentState;
   }
@@ -60,12 +61,20 @@ int ping(){
   return pulseTime / US;
 }
 
-void fireCar(int i){  
-  Mini.M1.set(i);  
-  Mini.M2.set(i);  
+void fireCar(){  
+  Mini.M1.set(SPEED);  
+  Mini.M2.set(SPEED);  
 }
 
 void stopCar(){
    Mini.M1.set(0);  
    Mini.M2.set(0);  
 }
+
+void turnCar(){
+  Mini.M1.set(SPEED);
+  Mini.M2.set(-SPEED);
+  delay(800);
+  fireCar();
+}
+
