@@ -1,18 +1,21 @@
 #include <MatrixMini.h>
 #define SPEED 50
+#define digitalSensor A3
 
 bool carState = false;
 
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
   Serial.begin(9600); // set up Serial library at 9600 bps  
-  Serial.println("\n Matrix Mini DC Motor Test \n");  
+  pinMode(digitalSensor,INPUT);  
 }
 
 void loop() { 
   delay(100);
   fireButton();
-  stopButton();  
+  stopButton();
+  bool digitalValue = digitalRead(digitalSensor);
+  Serial.println(digitalValue); 
 }
 
 void fireButton(){
