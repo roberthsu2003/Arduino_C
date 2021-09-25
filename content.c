@@ -3,11 +3,6 @@
 #define ECHO_PIN     A1
 #define MAX_DISTANCE 200
 #define US 58.1
- 
-
-
-
-
 
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
