@@ -5,6 +5,8 @@
 #define US 58.1
 #define SPEED 50
 
+bool carState = false;
+
 void setup() {
   Mini.begin();  // create with the default frequency 1.6KHz
   Serial.begin(9600); // set up Serial library at 9600 bps  
@@ -20,7 +22,7 @@ void loop() {
   stopButton();
   int distance = ping();
   Serial.println(distance);
-  if(distance <= 10){
+  if(distance <= 10 && carState==true){
     turnCar();
   }
 }
@@ -63,12 +65,14 @@ int ping(){
 
 void fireCar(){  
   Mini.M1.set(SPEED);  
-  Mini.M2.set(SPEED);  
+  Mini.M2.set(SPEED);
+  carState = true; 
 }
 
 void stopCar(){
    Mini.M1.set(0);  
-   Mini.M2.set(0);  
+   Mini.M2.set(0);
+   carState = false;  
 }
 
 void turnCar(){
