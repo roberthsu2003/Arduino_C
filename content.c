@@ -1,6 +1,7 @@
 #include <MatrixMini.h>
 #define SPEED 50
 #define digitalSensor A3
+#define analogPin A2
 
 bool carState = false;
 
@@ -12,6 +13,8 @@ void setup() {
 
 void loop() { 
   delay(100);
+  int analogValue = analogRead(analogPin);
+  Serial.println("類比訊號:"+String(analogValue));
   fireButton();
   stopButton();  
   bool digitalValue = digitalRead(digitalSensor);
