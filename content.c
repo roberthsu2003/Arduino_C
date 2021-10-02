@@ -1,5 +1,5 @@
 #include <MatrixMini.h>
-#define SPEED 30
+#define SPEED 50
 #define digitalSensor A3
 
 bool carState = false;
@@ -17,7 +17,8 @@ void loop() {
   bool digitalValue = digitalRead(digitalSensor);
   Serial.println(digitalValue);
   if(digitalValue == 0 && carState == true){
-    stopCar();
+    //stopCar();
+    turnCar();
   }
    
 }
@@ -64,6 +65,11 @@ void stopCar(){
 }
 
 void turnCar(){
+  //停一下 0.5秒
+  Mini.M1.set(0);
+  Mini.M2.set(0);
+  delay(500);
+  //旋轉0.8
   Mini.M1.set(SPEED);
   Mini.M2.set(-SPEED);
   delay(800);
