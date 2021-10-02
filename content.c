@@ -1,28 +1,14 @@
 #include <MatrixMini.h>
-#define SPEED 50
-#define digitalSensor A3
-
-
-bool carState = false;
 
 void setup() {
+  // put your setup code here, to run once:
   Mini.begin();  // create with the default frequency 1.6KHz
-  Serial.begin(9600); // set up Serial library at 9600 bps  
-  pinMode(digitalSensor,INPUT);  
+  Serial.begin(9600);
 }
 
-void loop() { 
-  delay(100);  
+void loop() {
   fireButton();
-  stopButton(); 
-  Serial.println("亂數:"+String(random(500,1000))); 
-  bool digitalValue = digitalRead(digitalSensor);
-  Serial.println(digitalValue);
-  if(digitalValue == 0 && carState == true){
-    //stopCar();
-    turnCar();
-  }
-   
+  stopButton();
 }
 
 void fireButton(){
@@ -32,8 +18,7 @@ void fireButton(){
   if(currentState != previousState){    
     counter += 1;
     if(counter % 2 == 0){
-      Serial.println("啟動");
-      fireCar();
+      Serial.println("防盜器啟動");      
     }
     previousState = currentState;
   }
@@ -46,36 +31,8 @@ void stopButton(){
   if(currentState != previousState){    
     counter += 1;    
     if(counter % 2 == 0){
-      Serial.println("停止");
-      stopCar();
+      Serial.println("防盜器關閉");     
     }
     previousState = currentState;
   }
-}
-
-
-void fireCar(){  
-  Mini.M1.set(SPEED);  
-  Mini.M2.set(SPEED);
-  carState = true; 
-}
-
-void stopCar(){
-   Mini.M1.set(0);  
-   Mini.M2.set(0);
-   carState = false;  
-}
-
-void turnCar(){
-  //停一下 0.5秒
-  Mini.M1.set(0);
-  Mini.M2.set(0);
-  delay(500);
-  //旋轉0.8
-  Mini.M1.set(SPEED);
-  Mini.M2.set(-SPEED);
-  //建立亂數
-  
-  delay(random(500,1000));
-  fireCar();
 }
