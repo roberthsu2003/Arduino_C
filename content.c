@@ -1,7 +1,7 @@
 #include <MatrixMini.h>
 #define SPEED 50
 #define digitalSensor A3
-#define analogPin A2
+
 
 bool carState = false;
 
@@ -12,11 +12,10 @@ void setup() {
 }
 
 void loop() { 
-  delay(100);
-  int analogValue = analogRead(analogPin);
-  Serial.println("類比訊號:"+String(analogValue));
+  delay(100);  
   fireButton();
-  stopButton();  
+  stopButton(); 
+  Serial.println("亂數:"+String(random(500,1000))); 
   bool digitalValue = digitalRead(digitalSensor);
   Serial.println(digitalValue);
   if(digitalValue == 0 && carState == true){
@@ -75,6 +74,8 @@ void turnCar(){
   //旋轉0.8
   Mini.M1.set(SPEED);
   Mini.M2.set(-SPEED);
-  delay(800);
+  //建立亂數
+  
+  delay(random(500,1000));
   fireCar();
 }
