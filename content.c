@@ -1,20 +1,25 @@
 #include <iostream>
-
 using namespace std;
 
 int main() {
-	const int nums = 5;	
-	int scores[nums];
-	int sum = 0;
-	for(int i=0;i<nums;i++){
-		cout << "請輸入第" << i+1 << "位學生的成績:";
-		cin >> scores[i];
+	int nums;
+	int min = 99999;
+	int max = 0;
+	cout << "請輸入數值的數量:";
+	cin >> nums;
+	int values[nums];
+
+	for(int i=0; i<nums; i++){
+		cout << "請輸入第" << i+1 << "數值:";
+		cin >> values[i];
 	}
 
 	for(int i=0; i<nums; i++){
-		cout << "第" << i+1 << "學生的分數:" << scores[i] << endl;
-		sum += scores[i];
+		cout << "第" << i+1 << "個數值是" << values[i] << endl;
+		min = min < values[i] ? min : values[i];
+		max = max > values[i] ? max : values[i];
 	}
 
-	cout << "全班總成績為" << sum << "平均為:" << sum/(float)nums << endl;
+	cout << "最大值是:" << max << ",最小值:" << min << endl;
+	return 0;	
 }
