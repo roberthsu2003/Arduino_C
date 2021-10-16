@@ -1,4 +1,8 @@
 #include <MatrixMini.h>
+#define TRIGGER_PIN  A0
+#define ECHO_PIN A1
+#define US 58.1
+
 void setup() {
   Mini.begin();
   Serial.begin(9600);
@@ -17,7 +21,8 @@ void leftButton(){
   if(currentState != previousState){    
     counter += 1;
     if(counter % 2 == 0){
-      Serial.println("左按鈕被按了一下");     
+      Serial.println("左按鈕被按了一下");
+      Serial.println(ping());   
     }
     previousState = currentState;
   }
@@ -36,3 +41,10 @@ void rightButton(){
   }
 }
 
+int ping(){
+  digitalWrite(TRIGGER_PIN,HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIGGER_PIN,LOW);
+  unsigned long pulseTime = pulseIn(ECHO_PIN,HIGH);
+  return pulseTime / US;
+}
