@@ -1,15 +1,20 @@
 #include <iostream>
-#include <time.h>
-
 using namespace std;
+
 int main() {
-	srand(time(NULL));	
-	int max = 200;
-	int min = 100;
-	for(int i=0; i<100; i++){
-		int randValue = rand() % (max-min+1) + min;
-		cout << "100~200之間的亂數:" << randValue << endl;
+	int nums;
+	cout << "請輸入要排序的數值個數:";
+	cin >> nums;
+	//建立陣列
+	int array[nums];
+	//給陣列內容
+	for(int i=0; i<nums; i++){
+		cout << "請輸入第" << i+1 << "個數值:";
+		cin >> array[i];
 	}
-	
-	return 0;
+	//排序前的內容輸出
+	cout << "排序前:" << endl;
+	for(int i=0; i<nums; i++){
+		cout << array[i] << " ";
+	}
 }
