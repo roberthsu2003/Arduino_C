@@ -5,11 +5,14 @@
 
 void setup() {
   Mini.begin();
+  pinMode(TRIGGER_PIN,OUTPUT);
+  pinMode(ECHO_PIN,INPUT);
   Serial.begin(9600);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
+  
   leftButton();
   rightButton();
 }
