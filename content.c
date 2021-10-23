@@ -2,12 +2,17 @@
 #define TRIGGER_PIN  A0
 #define ECHO_PIN A1
 #define US 58.1
+#define buzzer 3
 
 void setup() {
   Mini.begin();
   pinMode(TRIGGER_PIN,OUTPUT);
   pinMode(ECHO_PIN,INPUT);
   Serial.begin(9600);
+  
+  pinMode(buzzer, OUTPUT);
+  digitalWrite(buzzer, HIGH);
+  
 }
 
 void loop() {
@@ -54,6 +59,7 @@ int ping(){
 }
 
 void alermSystem(){
+   bee(buzzer,500);
    Serial.println("開啟防盜");
    int distances[10];
    for(int i=0; i<10; i++){
@@ -64,7 +70,14 @@ void alermSystem(){
 }
 
 void removeAlerm(){
+  bee(buzzer,500);
   Serial.println("解除防盜");
+}
+
+void bee(int pin,int delayTime){
+  digitalWrite(pin, LOW);
+  delay(delayTime);
+  digitalWrite(pin, HIGH);
 }
 
 
