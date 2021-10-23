@@ -25,7 +25,7 @@ void leftButton(){
     counter += 1;
     if(counter % 2 == 0){
       Serial.println("左按鈕被按了一下");
-      Serial.println(ping());   
+      alermSystem();  
     }
     previousState = currentState;
   }
@@ -38,7 +38,8 @@ void rightButton(){
   if(currentState != previousState){    
     counter += 1;
     if(counter % 2 == 0){
-      Serial.println("右按鈕被按了一下");     
+      Serial.println("右按鈕被按了一下"); 
+      removeAlerm();    
     }
     previousState = currentState;
   }
@@ -51,3 +52,13 @@ int ping(){
   unsigned long pulseTime = pulseIn(ECHO_PIN,HIGH);
   return pulseTime / US;
 }
+
+void alermSystem(){
+   Serial.println("開啟防盜");
+}
+
+void removeAlerm(){
+  Serial.println("解除防盜");
+}
+
+
