@@ -12,7 +12,7 @@ void setup() {
   
   pinMode(buzzer, OUTPUT);
   digitalWrite(buzzer, HIGH);
-  
+  longBee(buzzer);
 }
 
 void loop() {
@@ -79,5 +79,12 @@ void bee(int pin,int delayTime){
   delay(delayTime);
   digitalWrite(pin, HIGH);
 }
+
+void longBee(int pin) {
+  digitalWrite(pin, LOW);
+  delay(5000);
+  digitalWrite(pin, HIGH);
+}
+
 
 
