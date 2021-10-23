@@ -55,6 +55,12 @@ int ping(){
 
 void alermSystem(){
    Serial.println("開啟防盜");
+   int distances[10];
+   for(int i=0; i<10; i++){
+      distances[i] = ping();
+      Serial.print(distances[i]);
+      Serial.print(" ");
+   }
 }
 
 void removeAlerm(){
