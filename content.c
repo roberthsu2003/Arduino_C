@@ -23,8 +23,9 @@ void leftButton(){
   if(currentState != previousState){    
     counter += 1;
     if(counter % 2 == 0){
-      Serial.println("左按鈕被按了一下");
-      bee(buzzer,500);  
+      //Serial.println("左按鈕被按了一下");
+      bee(buzzer,500);
+      playGame();  
     }
     previousState = currentState;
   }
@@ -34,4 +35,13 @@ void bee(int pin,int delayTime){
   digitalWrite(pin, LOW);
   delay(delayTime);
   digitalWrite(pin, HIGH);
+}
+
+void playGame(){
+  int min = 1;
+  int max = 99;
+  int keyin;
+  int count = 0;
+  int guess = random(1,100);
+  Serial.print("=================猜數字遊戲================\n\n");
 }
