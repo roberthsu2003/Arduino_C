@@ -1,36 +1,37 @@
-#include <iostream>
-using namespace std;
+#include <MatrixMini.h>
+#define buzzer 3
 
-int main() {
-	int min = 1;
-	int max = 99;
-	int keyin;
-	int count = 0;
-	srandom(time(NULL));
-	int guess = random() % (max-min+1) + 1;
-	cout << "=================猜數字遊戲================\n\n";
-	while(true){
-		cout << "猜數字範圍" << min << "~" << max << ":";
-		cin >> keyin;
-		count += 1;
-		if(keyin >= min && keyin <= max){
-			if(keyin == guess){
-				cout << "賓果!猜對了,答案是" << guess << endl;
-				cout << "您猜了" << count << "次" << endl;
-				break;
-			}else if(keyin > guess){
-				cout << "再小一點!";
-				max = keyin - 1;
-			}else if(keyin < guess){
-				cout << "再大一點!";
-				min = keyin + 1;
-			}
-			cout << "您已經猜了" << count << "次" << endl;
-			
-		}else{
-			cout << "請輸入提示範圍內的數字" << endl;
-		}
-	}
+void setup() {
+  // put your setup code here, to run once:
+  Mini.begin();
+  Serial.begin(9600);
+  pinMode(buzzer, OUTPUT);
+  digitalWrite(buzzer, HIGH);
+}
 
-	cout << "遊戲結束" << endl;
-} 
+void loop() {
+  // put your main code here, to run repeatedly:
+  leftButton();
+}
+
+
+
+void leftButton(){
+   static bool previousState = false;
+   static int counter = 0;
+   bool currentState = Mini.BTN1.get();
+  if(currentState != previousState){    
+    counter += 1;
+    if(counter % 2 == 0){
+      Serial.println("左按鈕被按了一下");
+      bee(buzzer,500);  
+    }
+    previousState = currentState;
+  }
+}
+
+void bee(int pin,int delayTime){
+  digitalWrite(pin, LOW);
+  delay(delayTime);
+  digitalWrite(pin, HIGH);
+}
