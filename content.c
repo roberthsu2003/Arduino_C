@@ -52,10 +52,21 @@ void playGame(){
         break;
       }
     }
-
+    count += 1;
     if(keyin >= min && keyin <=max){
-      Serial.println("在範圍內");
-      break;
+      if(keyin == guess){
+        Serial.println("賓果!猜對了,答案是"+String(guess));
+        Serial.println("您猜了" + String(count) + "次");
+        break;
+      }else if(keyin > guess){
+        max = keyin - 1;
+        Serial.println("再小一點");
+      }else if(keyin < guess){
+        min = keyin + 1;
+        Serial.println("再大一點");
+      }
+      Serial.println("您已經猜了"+String(count)+"次");
+      
     }else{
       Serial.println("請輸入提示範圍內的數字!");
     }
