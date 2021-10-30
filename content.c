@@ -44,4 +44,23 @@ void playGame(){
   int count = 0;
   int guess = random(1,100);
   Serial.print("=================猜數字遊戲================\n\n");
+  while(true){
+    Serial.println("猜數字範圍"+String(min)+"~"+String(max)+":");
+    while(true){
+      if(Serial.available()){
+        keyin = Serial.parseInt();
+        break;
+      }
+    }
+
+    if(keyin >= min && keyin <=max){
+      Serial.println("在範圍內");
+      break;
+    }else{
+      Serial.println("請輸入提示範圍內的數字!");
+    }
+  }
+
+  Serial.println("遊戲結束");
+  
 }
