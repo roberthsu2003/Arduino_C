@@ -1,29 +1,45 @@
-int num=0;
+#define R 3
+#define G 5
+#define B 6
+
+String stringBuffer;
 
 void setup() {
-  pinMode(13, OUTPUT);
   Serial.begin(9600);
-  Serial.println("請輸入13pinLed,閃爍的次數:");  
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   if(Serial.available() > 0){
-      num=Serial.parseInt();
-      Serial.print("目前將閃爍");
-      Serial.print(num);
-      Serial.println("次");      
-    }
-  blink13(&num);
-}
+    stringBuffer = Serial.readString();    
+    int stringLength = stringBuffer.length();
+    String rString = ""; 
+    int rgbArray[3];
+    int j = 0;
+     
+    for(int i=0; i<stringLength; i++){
+      
+      if(stringBuffer[i] != ',' ){ 
+        rString += stringBuffer[i];       
+      }else{
+        rgbArray[j] = rString.toInt();
+        j++;
+        rString = "";
+      }
 
-void blink13(int *n){
-  for(; *n > 0;*n-=1){
-    Serial.println(*n);
-    digitalWrite(13,HIGH);
-    delay(1000);
-    digitalWrite(13,LOW);
-    delay(1000);
+      if(i == stringLength-1){
+        rgbArray[j] = rString.toInt();
+        j++;
+         rString = "";
+      } 
+      
+      
+    }
+
+    Serial.println(rgbArray[0]);
+    Serial.println(rgbArray[1]);
+    Serial.println(rgbArray[2]);
+    
   }
-  
+
 }
