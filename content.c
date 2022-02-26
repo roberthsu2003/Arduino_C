@@ -1,12 +1,16 @@
-#define VA A0
+#define btnPin 7
+
+bool btnState;
 
 void setup() {
- Serial.begin(9600);
-
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(btnPin,INPUT);
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-  int value = analogRead(VA);
-  Serial.println(value);
+  btnState = digitalRead(btnPin);
+  Serial.println(btnState);
+  delay(100);
 }
